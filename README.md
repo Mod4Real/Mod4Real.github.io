@@ -2,7 +2,7 @@
 
 ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/edb64c77-6cb9-4c5f-9379-c30527ebc25e)
 
-| TEST | Second Header | First Header  | Second Header | First Header |  
+| TEST | TEST | TEST | TEST | TEST |  
 ----------------------------------------------------------------------------------
 
 + 𝑰𝒏𝒔𝒕𝒂𝒈𝒓𝒂𝒎: [Click Here](https://www.instagram.com/shaqir_gardypie/). - ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/5a55358d-f8e9-4362-833d-3ec9c3d31833)
@@ -38,7 +38,7 @@
 
 ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/3bb6b143-d5a0-4240-b020-f3b83c5705de)
 
-| TEST | Second Header | First Header  | Second Header | First Header |  
+| TEST | TEST | TEST | TEST | TEST |  
 ----------------------------------------------------------------------------------
 
 + 𝑷𝒂𝒔𝒕𝒆𝒃𝒊𝒏: [Click Here](https://pastebin.com/u/Mod4Real). - ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/171ed738-2e94-478e-8c19-ae003b0a2f09)
