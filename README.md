@@ -2,7 +2,7 @@
 
 ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/edb64c77-6cb9-4c5f-9379-c30527ebc25e)
 
-| TEST | TEST | TEST | 
+| [Other](https://mod4real1.github.io/) | TEST | TEST | 
 ----------------------------------------------------------------------------------
 
 + 𝑰𝒏𝒔𝒕𝒂𝒈𝒓𝒂𝒎: [Click Here](https://www.instagram.com/shaqir_gardypie/). - ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/5a55358d-f8e9-4362-833d-3ec9c3d31833)
