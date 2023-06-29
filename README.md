@@ -45,7 +45,7 @@
 ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/fb14fc7b-e57b-4431-b471-cbc5f18cd6fb)
 
 
-| [𝙈𝙔 𝙎𝘾𝙍𝙄𝙋𝙏𝙎](https://mod4real1.github.io/) | [𝙊𝙏𝙃𝙀𝙍 𝙎𝘾𝙍𝙄𝙋𝙏𝙎](https://mod4real1.github.io/) | [𝙄𝙉𝙁𝙊](https://mod4real1.github.io/) | 
+| [𝙈𝙔 𝙎𝘾𝙍𝙄𝙋𝙏𝙎](https://mod4real1.github.io/) | [𝙊𝙏𝙃𝙀𝙍 𝙎𝘾𝙍𝙄𝙋𝙏𝙎](https://mod4real1.github.io/) | [𝙈𝙊𝙍𝙀 𝙄𝙉𝙁𝙊](https://mod4real1.github.io/) | 
 
 ----------------------------------------------------------------------------------
 
