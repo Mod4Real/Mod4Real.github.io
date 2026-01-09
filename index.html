@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Mox Website</title>
+
+    <!-- Default theme when the site loads -->
+    <link id="themeStylesheet" rel="stylesheet" href="light.css">
+</head>
+
+<body>
+
+    <h1>Welcome to my website</h1>
+    <p>Choose a theme below:</p>
+
+    <!-- Theme Switcher Buttons -->
+    <button onclick="setTheme('light')">Light Theme</button>
+    <button onclick="setTheme('dark')">Dark Theme</button>
+    <button onclick="setTheme('horror')">Horror Theme</button>
+
+    <!-- Theme Switcher Script -->
+    <script>
+        function setTheme(theme) {
+            document.getElementById('themeStylesheet').href = theme + '.css';
+        }
+    </script>
+
+</body>
+</html>
