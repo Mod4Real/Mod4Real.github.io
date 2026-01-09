@@ -1,30 +1,31 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Mox Website</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mox's Website</title>
 
-    <!-- Default theme when the site loads -->
-    <link id="themeStylesheet" rel="stylesheet" href="light.css">
+  <!-- Base styles -->
+  <link rel="stylesheet" href="styles/base.css">
+
+  <!-- Theme styles -->
+  <link rel="stylesheet" href="styles/theme-light.css">
+  <link rel="stylesheet" href="styles/theme-dark.css">
+  <link rel="stylesheet" href="styles/theme-horror.css">
+
+  <!-- Theme script -->
+  <script src="scripts/theme.js" defer></script>
 </head>
-
 <body>
 
-    <h1>Welcome to my website</h1>
-    <p>Choose a theme below:</p>
+  <h1>Welcome to Mox's Website</h1>
+  <p>This is your starter page. Themes will work here once we add the JS.</p>
 
-    <!-- Theme Switcher Buttons -->
-    <button onclick="setTheme('light')">Light Theme</button>
-    <button onclick="setTheme('dark')">Dark Theme</button>
-    <button onclick="setTheme('horror')">Horror Theme</button>
-
-    <!-- Theme Switcher Script -->
-    <script>
-        function setTheme(theme) {
-            document.getElementById('themeStylesheet').href = theme + '.css';
-        }
-    </script>
+  <div class="theme-buttons">
+    <button onclick="setTheme('light')">Light</button>
+    <button onclick="setTheme('dark')">Dark</button>
+    <button onclick="setTheme('horror')">Horror</button>
+  </div>
 
 </body>
 </html>
-
-<link id="themeStylesheet" rel="stylesheet" href="horror.css">
