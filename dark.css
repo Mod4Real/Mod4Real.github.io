@@ -1,1 +1,21 @@
+/* ===== DARK THEME ===== */
 
+body {
+    background: #111111;
+    color: #eeeeee;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    background: #222222;
+    color: #ffffff;
+    border: 1px solid #444444;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #333333;
+}
