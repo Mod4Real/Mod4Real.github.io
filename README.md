@@ -1,5 +1,5 @@
 # 
-[Design-Studio-2026-01-09.pdf](https://github.com/user-attachments/files/24531469/Design-Studio-2026-01-09.pdf)
+
 
 ----------------------------------------------------------------------------------
 
