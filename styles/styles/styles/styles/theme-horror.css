@@ -1,9 +1,0 @@
-:root[data-theme="horror"] {
-  --bg: #050505;
-  --text: #d32f2f;
-}
-
-body {
-  background: var(--bg);
-  color: var(--text);
-}
