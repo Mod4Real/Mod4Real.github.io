@@ -1,1 +1,64 @@
+/* ===== HORROR THEME ===== */
 
+body {
+    background: #050505;
+    color: #e6e6e6;
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 20px;
+    line-height: 1.6;
+}
+
+/* Blood‑red headers */
+h1, h2, h3 {
+    color: #ff1a1a;
+    text-shadow: 0 0 10px #8b0000;
+    letter-spacing: 2px;
+}
+
+/* Glowing red links */
+a {
+    color: #ff3b3b;
+    text-decoration: none;
+}
+a:hover {
+    text-shadow: 0 0 8px #ff0000;
+}
+
+/* Buttons */
+button {
+    background: #1a1a1a;
+    color: #ff3b3b;
+    border: 1px solid #ff3b3b;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+button:hover {
+    background: #ff3b3b;
+    color: #1a1a1a;
+    box-shadow: 0 0 10px #ff0000;
+}
+
+/* Subtle horror grain effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    background: url("https://i.imgur.com/8fKQZ5C.png");
+    opacity: 0.05;
+}
+
+/* Section boxes */
+.container {
+    background: #0d0d0d;
+    padding: 20px;
+    border: 1px solid #330000;
+    box-shadow: 0 0 15px #1a0000;
+    margin-bottom: 20px;
+}
