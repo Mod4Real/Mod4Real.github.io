@@ -1,4 +1,5 @@
-# ![image](https://github.com/Mod4Real/Mod4Real.github.io/assets/134821089/30700225-6658-46b1-aa22-f1c1924b93bf)
+# 
+[Design-Studio-2026-01-09.pdf](https://github.com/user-attachments/files/24531469/Design-Studio-2026-01-09.pdf)
 
 ----------------------------------------------------------------------------------
 
