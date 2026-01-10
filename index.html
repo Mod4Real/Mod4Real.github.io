@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mox's Horror Site</title>
+
+  <style>
+    /* ====== GLOBAL STYLES ====== */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      overflow-x: hidden;
+    }
+
+    /* Red ambient glow */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* ====== GLITCH TITLE ====== */
+    .title {
+      font-size: 3.5rem;
+      text-align: center;
+      margin-top: 120px;
+      letter-spacing: 3px;
+      position: relative;
+      animation: glitch 1.5s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+      20% { text-shadow: -2px 0 red, 2px -2px #0ff; }
+      40% { text-shadow: 2px -2px red, -2px 2px #0ff; }
+      60% { text-shadow: -2px 2px red, 2px 0 #0ff; }
+      80% { text-shadow: 2px 0 red, -2px -2px #0ff; }
+      100% { text-shadow: -2px -2px red, 2px 2px #0ff; }
+    }
+
+    /* ====== SECTION TEXT ====== */
+    .content {
+      max-width: 700px;
+      margin: 60px auto;
+      padding: 0 20px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+      opacity: 0;
+      animation: fadeIn 2s forwards 1s;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    /* ====== BLOODLINE DIVIDER ====== */
+    .bloodline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, red, transparent);
+      margin: 40px 0;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="title">WELCOME TO THE DARK</div>
+
+  <div class="content">
+    <div class="bloodline"></div>
+
+    <p>
+      Something watches from the shadows.  
+      The deeper you scroll, the closer it gets.
+    </p>
+
+    <p>
+      This is your new horror theme starter.  
+      Add sections, images, buttons, or a navigation bar — the atmosphere is already set.
+    </p>
+
+    <div class="bloodline"></div>
+  </div>
+
+</body>
+</html>
