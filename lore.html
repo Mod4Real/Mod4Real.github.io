@@ -1,1 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lore | Mox4Real</title>
 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* LOGO */
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 6px;
+      text-align: center;
+      padding: 25px 0;
+      color: white;
+      text-transform: uppercase;
+      animation: logoGlitch 2s infinite;
+    }
+
+    @keyframes logoGlitch {
+      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+      10% { text-shadow: -4px 2px red, 4px -2px #0ff; }
+      20% { text-shadow: 2px -4px red, -2px 4px #0ff; }
+      30% { text-shadow: -2px 4px red, 2px -4px #0ff; }
+      40% { text-shadow: 4px -2px red, -4px 2px #0ff; }
+      50% { text-shadow: 0 0 12px red; }
+      60% { text-shadow: -2px -2px #0ff; }
+      70% { text-shadow: 2px 2px red; }
+      80% { text-shadow: -4px 0 red, 4px 0 #0ff; }
+      100% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+    }
+
+    /* NAV BAR */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,0,0,0.3);
+      border-bottom: 1px solid rgba(255,0,0,0.3);
+      margin-bottom: 40px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: red;
+      text-shadow: 0 0 8px red;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: red;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: red;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px red;
+    }
+
+    .bloodline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, red, transparent);
+      margin: 40px 0;
+      opacity: 0.6;
+    }
+
+    /* REDACTED TEXT */
+    .redacted {
+      background: #111;
+      color: transparent;
+      border-radius: 3px;
+      padding: 2px 6px;
+      position: relative;
+    }
+
+    .redacted::after {
+      content: "██████████";
+      color: red;
+      text-shadow: 0 0 6px red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* GLITCH TIMESTAMP */
+    .timestamp {
+      color: #888;
+      font-size: 0.9rem;
+      animation: timeGlitch 3s infinite;
+    }
+
+    @keyframes timeGlitch {
+      0% { opacity: 1; }
+      20% { opacity: 0.4; }
+      40% { opacity: 1; }
+      60% { opacity: 0.2; }
+      80% { opacity: 1; }
+      100% { opacity: 0.6; }
+    }
+
+    /* WHISPER TEXT */
+    .whisper {
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .whisper:hover {
+      color: red;
+      text-shadow: 0 0 6px red;
+    }
+
+    @keyframes whisperGlitch {
+      0% { transform: skew(0deg); opacity: 1; }
+      20% { transform: skew(8deg); opacity: 0.6; }
+      40% { transform: skew(-8deg); opacity: 0.8; }
+      60% { transform: skew(4deg); opacity: 0.5; }
+      80% { transform: skew(-4deg); opacity: 0.9; }
+      100% { transform: skew(0deg); opacity: 1; }
+    }
+
+    /* PAGE TRANSITION */
+    #transition {
+      position: fixed;
+      inset: 0;
+      background: black;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 9999;
+    }
+
+    @keyframes staticFlash {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      40% { opacity: 0.4; }
+      60% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="transition"></div>
+
+  <div class="logo">Mox4Real</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="lore.html">Lore</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="experiments.html">Experiments</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+
+    <div class="section-title">Recovered Log #01</div>
+    <p class="timestamp">Timestamp: 03:17 — Source: Unknown</p>
+
+    <p>
+      The entity designated <span class="redacted"></span> was first detected after a surge of  
+      <span class="whisper">unexplained interference</span> across all monitoring channels.
+    </p>
+
+    <p>
+      Attempts to isolate the signal resulted in  
+      <span class="redacted"></span> casualties and the loss of  
+      <span class="whisper">two observers</span>.
+    </p>
+
+    <div class="bloodline"></div>
+
+    <div class="section-title">Recovered Log #02</div>
+    <p class="timestamp">Timestamp: 04:52 — File Integrity: 63%</p>
+
+    <p>
+      Audio reconstruction reveals a repeating phrase:  
+      <span class="whisper">“It sees you.”</span>  
+      The voice does not match any known personnel.
+    </p>
+
+    <p>
+      Visual data is corrupted beyond repair. Only a single frame remains:  
+      a silhouette standing behind the camera operator, despite  
+      <span class="redacted"></span> being alone in the room.
+    </p>
+
+    <div class="bloodline"></div>
+
+    <div class="section-title">Recovered Log #03</div>
+    <p class="timestamp">Timestamp: 06:11 — Encryption Broken</p>
+
+    <p>
+      The final message before the system blackout reads:  
+      <span class="whisper">“Do not follow the signal.”</span>
