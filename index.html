@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mox's Horror Site</title>
+  <title>Mox4Real</title>
 
   <style>
-    /* ====== GLOBAL STYLES ====== */
     body {
       margin: 0;
       padding: 0;
@@ -16,7 +15,6 @@
       overflow-x: hidden;
     }
 
-    /* Red ambient glow */
     body::before {
       content: "";
       position: fixed;
@@ -26,16 +24,63 @@
       z-index: -1;
     }
 
-    /* ====== GLITCH TITLE ====== */
-    .title {
-      font-size: 3.5rem;
+    /* ===== LOGO ===== */
+    .logo {
+      font-size: 2.8rem;
+      font-weight: bold;
+      letter-spacing: 4px;
+      padding: 20px;
       text-align: center;
-      margin-top: 120px;
-      letter-spacing: 3px;
-      position: relative;
       animation: glitch 1.5s infinite;
+      color: #fff;
+      text-transform: uppercase;
     }
 
+    /* ===== NAV BAR ===== */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,0,0,0.3);
+      border-bottom: 1px solid rgba(255,0,0,0.3);
+      margin-bottom: 40px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    /* Flicker hover effect */
+    nav a:hover {
+      color: red;
+      text-shadow: 0 0 8px red;
+    }
+
+    /* Glitch underline */
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: red;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* ===== GLITCH ANIMATION ===== */
     @keyframes glitch {
       0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
       20% { text-shadow: -2px 0 red, 2px -2px #0ff; }
@@ -45,10 +90,10 @@
       100% { text-shadow: -2px -2px red, 2px 2px #0ff; }
     }
 
-    /* ====== SECTION TEXT ====== */
+    /* ===== CONTENT ===== */
     .content {
       max-width: 700px;
-      margin: 60px auto;
+      margin: 40px auto;
       padding: 0 20px;
       font-size: 1.2rem;
       line-height: 1.7;
@@ -60,7 +105,6 @@
       to { opacity: 1; }
     }
 
-    /* ====== BLOODLINE DIVIDER ====== */
     .bloodline {
       width: 100%;
       height: 2px;
@@ -73,19 +117,29 @@
 
 <body>
 
-  <div class="title">WELCOME TO THE DARK</div>
+  <!-- LOGO -->
+  <div class="logo">Mox4Real</div>
 
+  <!-- CREEPY NAV BAR -->
+  <nav>
+    <a href="#">Home</a>
+    <a href="#">Lore</a>
+    <a href="#">Gallery</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- CONTENT -->
   <div class="content">
     <div class="bloodline"></div>
 
     <p>
-      Something watches from the shadows.  
-      The deeper you scroll, the closer it gets.
+      The signal is unstable.  
+      Something is trying to break through the static.
     </p>
 
     <p>
-      This is your new horror theme starter.  
-      Add sections, images, buttons, or a navigation bar — the atmosphere is already set.
+      Welcome to the Mox4Real horror site.  
+      More pages will awaken soon.
     </p>
 
     <div class="bloodline"></div>
