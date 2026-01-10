@@ -1,1 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiments | Mox4Real</title>
 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* LOGO */
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 6px;
+      text-align: center;
+      padding: 25px 0;
+      color: white;
+      text-transform: uppercase;
+      animation: logoGlitch 2s infinite;
+    }
+
+    @keyframes logoGlitch {
+      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+      10% { text-shadow: -4px 2px red, 4px -2px #0ff; }
+      20% { text-shadow: 2px -4px red, -2px 4px #0ff; }
+      30% { text-shadow: -2px 4px red, 2px -4px #0ff; }
+      40% { text-shadow: 4px -2px red, -4px 2px #0ff; }
+      50% { text-shadow: 0 0 12px red; }
+      60% { text-shadow: -2px -2px #0ff; }
+      70% { text-shadow: 2px 2px red; }
+      80% { text-shadow: -4px 0 red, 4px 0 #0ff; }
+      100% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+    }
+
+    /* NAV BAR */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,0,0,0.3);
+      border-bottom: 1px solid rgba(255,0,0,0.3);
+      margin-bottom: 40px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: red;
+      text-shadow: 0 0 8px red;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: red;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* PAGE TRANSITION */
+    #transition {
+      position: fixed;
+      inset: 0;
+      background: black;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 9999;
+    }
+
+    @keyframes staticFlash {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      40% { opacity: 0.4; }
+      60% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 850px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      color: red;
+      margin-bottom: 10px;
+      text-shadow: 0 0 6px red;
+    }
+
+    .bloodline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, red, transparent);
+      margin: 40px 0;
+      opacity: 0.6;
+    }
+
+    /* REDACTED TEXT */
+    .redacted {
+      background: #111;
+      color: transparent;
+      border-radius: 3px;
+      padding: 2px 6px;
+      position: relative;
+    }
+
+    .redacted::after {
+      content: "██████████";
+      color: red;
+      text-shadow: 0 0 6px red;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    /* WHISPER TEXT */
+    .whisper {
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .whisper:hover {
+      color: red;
+      text-shadow: 0 0 6px red;
+    }
+
+    @keyframes whisperGlitch {
+      0% { transform: skew(0deg); opacity: 1; }
+      20% { transform: skew(8deg); opacity: 0.6; }
+      40% { transform: skew(-8deg); opacity: 0.8; }
+      60% { transform: skew(4deg); opacity: 0.5; }
+      80% { transform: skew(-4deg); opacity: 0.9; }
+      100% { transform: skew(0deg); opacity: 1; }
+    }
+
+    /* WARNING BOX */
+    .warning {
+      border: 2px solid red;
+      padding: 15px;
+      margin: 25px 0;
+      background: rgba(50,0,0,0.3);
+      text-shadow: 0 0 6px red;
+      letter-spacing: 1px;
+    }
+
+    /* EXPERIMENT BLOCK */
+    .experiment {
+      border-left: 3px solid red;
+      padding-left: 15px;
+      margin-bottom: 30px;
+    }
+
+    .exp-id {
+      color: red;
+      font-weight: bold;
+      text-shadow: 0 0 6px red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="transition"></div>
+
+  <div class="logo">Mox4Real</div>
+
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="lore.html">Lore</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="experiments.html">Experiments</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+
+  <div class="content">
+
+    <div class="section-title">Experiment Log Archive</div>
+
+    <div class="warning">
+      WARNING: Unauthorized access detected.  
+      System integrity compromised.  
+      Proceed at your own risk.
+    </div>
+
+    <div class="experiment">
+      <div class="exp-id">Experiment 01 — Signal Exposure Test</div>
+      <p>
+        Subject exposed to <span class="redacted"></span> for 12 seconds.  
+        Immediate symptoms included disorientation, visual distortion, and  
+        repeated whispering of the phrase  
+        <span class="whisper">“It’s already here.”</span>
+      </p>
+    </div>
+
+    <div class="bloodline"></div>
+
+    <div class="experiment">
+      <div class="exp-id">Experiment 02 — Containment Breach Simulation</div>
+      <p>
+        Simulation terminated early after system logs showed  
+        <span class="redacted"></span> appearing inside the sealed chamber  
+        despite no physical entry point.
+      </p>
+      <p>
+        Last recorded audio:  
+        <span class="whisper">“Do not turn around.”</span>
+      </p>
+    </div>
+
+    <div class="bloodline"></div>
+
+    <div class="experiment">
+      <div class="exp-id">Experiment 03 — Visual Reconstruction Attempt</div>
+      <p>
+        Recovered frames show a humanoid silhouette standing  
+        <span class="whisper">closer</span> in each image.  
+        Final frame corrupted beyond recovery.
+      </p>
+      <p>
+        Analyst notes:  
+        <span class="redacted"></span> requested reassignment immediately.
+      </p>
+    </div>
+
+    <div class="bloodline"></div>
+
+    <div class="experiment">
+      <div class="exp-id">Experiment 04 — Audio Pattern Analysis</div>
+      <p>
+        The signal contains a repeating sub‑frequency that induces  
+        involuntary muscle tension and a sensation of  
+        <span class="whisper">being watched</span>.
+      </p>
+      <p>
+        Attempts to filter the pattern resulted in equipment failure  
+        and a total blackout of Lab Sector 3.
+      </p>
+    </div>
+
+  </div>
+
+  <script>
+    // WHISPER EFFECT
+    document.addEventListener("DOMContentLoaded", () => {
+      const words = document.querySelectorAll(".whisper");
+
+      setInterval(() => {
+        const w = words[Math.floor(Math.random() * words.length)];
+        w.style.animation = "whisperGlitch 0.4s";
+        setTimeout(() => w.style.animation = "", 400);
+      }, 2500);
+    });
+
+    // PAGE TRANSITION
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const screen = document.getElementById("transition");
+        screen.style.animation = "staticFlash 0.6s";
+
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 600);
+      });
+    });
+  </script>
+
+</body>
+</html>
