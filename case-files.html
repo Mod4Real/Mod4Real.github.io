@@ -58,7 +58,7 @@
       text-decoration: none;
       font-size: 1.1rem;
       letter-spacing: 2px;
-      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
+      transition: 0.4s ease;
     }
 
     nav a:hover {
@@ -74,6 +74,31 @@
       background: linear-gradient(to right, transparent, #4d0000, transparent);
       margin: 60px auto;
       animation: fadeIn 5s ease-out;
+    }
+
+    /* SEARCH BAR */
+    .search-box {
+      width: 70%;
+      margin: 0 auto 40px;
+      text-align: center;
+      animation: fadeIn 5.5s ease-out;
+    }
+
+    .search-box input {
+      width: 80%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #4d0000;
+      color: #b30000;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .search-box input:focus {
+      border-color: #b30000;
+      box-shadow: 0 0 10px #b30000;
     }
 
     /* CASE FILES */
@@ -125,7 +150,12 @@
 
   <div class="divider"></div>
 
-  <div class="case-container">
+  <!-- SEARCH BAR -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search case files...">
+  </div>
+
+  <div class="case-container" id="caseContainer">
 
     <!-- CASE 001 -->
     <div class="case">
@@ -220,6 +250,19 @@
     /* PAGE FADE-IN */
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
+    });
+
+    /* SEARCH FUNCTION */
+    const searchInput = document.getElementById("searchInput");
+    const cases = document.querySelectorAll(".case");
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+
+      cases.forEach(caseFile => {
+        const text = caseFile.innerText.toLowerCase();
+        caseFile.style.display = text.includes(query) ? "block" : "none";
+      });
     });
 
     /* PAGE FADE-OUT ON LINK CLICK */
