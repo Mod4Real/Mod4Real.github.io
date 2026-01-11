@@ -69,6 +69,31 @@
       animation: fadeIn 5s ease-out;
     }
 
+    /* SEARCH BAR */
+    .search-box {
+      width: 70%;
+      margin: 0 auto 40px;
+      text-align: center;
+      animation: fadeIn 5.5s ease-out;
+    }
+
+    .search-box input {
+      width: 80%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #4d0000;
+      color: #b30000;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .search-box input:focus {
+      border-color: #b30000;
+      box-shadow: 0 0 10px #b30000;
+    }
+
     .visuals-container {
       width: 70%;
       margin: 0 auto 100px;
@@ -95,7 +120,6 @@
       margin-bottom: 20px;
     }
 
-    /* IMAGE STYLING */
     .visual img {
       width: 100%;
       max-width: 700px;
@@ -133,6 +157,11 @@
 
   <div class="divider"></div>
 
+  <!-- SEARCH BAR -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search visuals...">
+  </div>
+
   <div class="visuals-container">
 
     <div class="visual">
@@ -169,6 +198,19 @@
   <script>
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
+    });
+
+    /* SEARCH FUNCTION */
+    const searchInput = document.getElementById("searchInput");
+    const visuals = document.querySelectorAll(".visual");
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+
+      visuals.forEach(visual => {
+        const text = visual.innerText.toLowerCase();
+        visual.style.display = text.includes(query) ? "block" : "none";
+      });
     });
 
     document.querySelectorAll("nav a").forEach(link => {
