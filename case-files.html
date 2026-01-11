@@ -6,6 +6,7 @@
   <title>Case Files — Mox4Real</title>
 
   <style>
+    /* GLOBAL */
     body {
       margin: 0;
       padding: 0;
@@ -22,6 +23,7 @@
       opacity: 1;
     }
 
+    /* CINEMATIC VIGNETTE */
     body::before {
       content: "";
       position: fixed;
@@ -31,27 +33,54 @@
       z-index: 5;
     }
 
-    .header {
+    /* HEADER */
+    .logo {
       text-align: center;
-      margin-top: 100px;
-      font-size: 3rem;
-      letter-spacing: 10px;
+      margin-top: 120px;
+      font-size: 3.2rem;
       color: #b30000;
-      animation: fadeIn 2s ease-out;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      animation: fadeIn 3s ease-out;
     }
 
+    /* NAVIGATION */
+    nav {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      animation: fadeIn 4s ease-out;
+    }
+
+    nav a {
+      color: #660000;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
+    }
+
+    nav a:hover {
+      color: #b30000;
+      text-shadow: 0 0 12px #b30000;
+      transform: translateY(-3px);
+    }
+
+    /* DIVIDER */
     .divider {
       width: 60%;
       height: 1px;
       background: linear-gradient(to right, transparent, #4d0000, transparent);
-      margin: 40px auto 60px;
-      animation: fadeIn 3s ease-out;
+      margin: 60px auto;
+      animation: fadeIn 5s ease-out;
     }
 
+    /* CASE FILES */
     .case-container {
       width: 70%;
-      margin: 0 auto 80px;
-      animation: fadeIn 4s ease-out;
+      margin: 0 auto 100px;
+      animation: fadeIn 6s ease-out;
     }
 
     .case {
@@ -74,6 +103,7 @@
       margin: 6px 0;
     }
 
+    /* ANIMATIONS */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -83,7 +113,16 @@
 
 <body>
 
-  <div class="header">CASE FILES</div>
+  <div class="logo">CASE FILES</div>
+
+  <nav>
+    <a href="index.html">FEED</a>
+    <a href="case-files.html">CASE FILES</a>
+    <a href="visuals.html">VISUALS</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="connect.html">CONNECT</a>
+  </nav>
+
   <div class="divider"></div>
 
   <div class="case-container">
@@ -95,7 +134,7 @@
       <p><strong>Date Recovered:</strong> 03/14/2019</p>
       <p>
         Security footage from an abandoned hospital wing shows a figure standing at the far end of the corridor.
-        The camera timestamp loops between <strong>03:12:09</strong> and <strong>03:12:10</strong>, but the figure’s position changes each cycle.
+        The timestamp loops between <strong>03:12:09</strong> and <strong>03:12:10</strong>, but the figure’s position changes each cycle.
         Audio track contains breathing not belonging to the investigator.
       </p>
     </div>
@@ -106,7 +145,7 @@
       <p><strong>Status:</strong> Classified</p>
       <p><strong>Date Logged:</strong> 11/02/2021</p>
       <p>
-        Interview transcript corrupted beyond repair. Only one line remains intact:
+        Interview transcript corrupted beyond repair. Only one line remains:
         <em>“It followed me out. I didn’t think it could.”</em>
         Subject disappeared 48 hours later. No forced entry. No exit footage.
       </p>
@@ -145,7 +184,7 @@
       <p>
         Case file originally contained 42 pages. Only 17 remain.
         Remaining pages reference events that never occurred, locations that don’t exist,
-        and a name that has been manually scratched out on every page.
+        and a name scratched out on every page.
         Scratch marks are fresh.
       </p>
     </div>
@@ -171,15 +210,28 @@
         Recovered audio contains 14 seconds of static followed by a whisper:
         <em>“Don’t let them close the file.”</em>
         Voice does not match any known subject or investigator.
-        File metadata shows it was created <strong>tomorrow</strong>.
+        Metadata shows it was created <strong>tomorrow</strong>.
       </p>
     </div>
 
   </div>
 
   <script>
+    /* PAGE FADE-IN */
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
+    });
+
+    /* PAGE FADE-OUT ON LINK CLICK */
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const url = link.getAttribute("href");
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
+      });
     });
   </script>
 
