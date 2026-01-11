@@ -80,23 +80,38 @@
       animation: fadeIn 5s ease-out;
     }
 
-    /* TERMINAL SECTION */
+    /* TERMINAL */
     .terminal {
       width: 70%;
       margin: 0 auto 120px;
       font-family: "Courier New", monospace;
       color: #b30000;
-      animation: fadeIn 6s ease-out;
       font-size: 1.1rem;
     }
 
-    .line {
+    .terminal-line {
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 2px solid #b30000;
+      width: 0;
+      opacity: 0;
       margin: 18px 0;
       letter-spacing: 2px;
     }
 
-    .prompt {
-      color: #4d0000;
+    /* BLINKING CURSOR */
+    .cursor {
+      display: inline-block;
+      width: 10px;
+      height: 18px;
+      background: #b30000;
+      margin-left: 5px;
+      animation: blink 0.8s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
     }
 
     /* INPUT FIELD */
@@ -121,9 +136,20 @@
       margin-top: 10px;
       color: #7a0000;
       letter-spacing: 2px;
+      opacity: 0;
     }
 
-    /* ANIMATIONS */
+    /* GLITCH FLASH */
+    @keyframes glitchFlash {
+      0% { background: #000; }
+      20% { background: #300; }
+      40% { background: #000; }
+      60% { background: #600; }
+      80% { background: #000; }
+      100% { background: #000; }
+    }
+
+    /* FADE IN */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -145,49 +171,16 @@
 
   <div class="divider"></div>
 
-  <div class="terminal">
-
-    <div class="line">> establishing secure channel...</div>
-    <div class="line">> connection stable</div>
-    <div class="line">> authorized user detected</div>
-    <div class="line">> awaiting command input</div>
-
-    <br>
-
-    <div class="line">
-      <span class="prompt">mox4real/connect:</span>
-      <a class="cmd-link" href="https://instagram.com/" target="_blank">open_instagram</a>
-    </div>
-
-    <div class="line">
-      <span class="prompt">mox4real/connect:</span>
-      <a class="cmd-link" href="https://tiktok.com/" target="_blank">open_tiktok</a>
-    </div>
-
-    <div class="line">
-      <span class="prompt">mox4real/connect:</span>
-      <a class="cmd-link" href="mailto:your@email.com">send_email</a>
-    </div>
-
-    <br><br>
-
-    <div class="line">> manual override enabled</div>
-    <div class="line">> enter password to unlock hidden node</div>
-
-    <div class="line">
-      <span class="prompt">mox4real/password:</span>
-      <input id="cmdInput" type="text" placeholder="enter command...">
-    </div>
-
-    <div id="feedback" class="line"></div>
-
-  </div>
+  <div class="terminal" id="terminal"></div>
 
   <script>
+    /* PAGE FADE-IN */
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
+      startTerminal();
     });
 
+    /* PAGE FADE-OUT ON NAV CLICK */
     document.querySelectorAll("nav a").forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
@@ -197,25 +190,109 @@
       });
     });
 
-    const input = document.getElementById("cmdInput");
-    const feedback = document.getElementById("feedback");
+    /* TERMINAL TEXT REVEAL */
+    const terminalLines = [
+      "> establishing secure channel...",
+      "> connection stable",
+      "> authorized user detected",
+      "> awaiting command input"
+    ];
 
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const cmd = input.value.trim().toLowerCase();
+    function typeLine(text, callback) {
+      const terminal = document.getElementById("terminal");
+      const line = document.createElement("div");
+      line.classList.add("terminal-line");
+      terminal.appendChild(line);
 
-        if (cmd === "moxx") {
-          feedback.textContent = "> access granted. redirecting...";
-          setTimeout(() => {
-            window.location.href = "secret.html";
-          }, 1200);
-        } else {
-          feedback.textContent = "> invalid command";
+      let i = 0;
+      line.style.opacity = 1;
+
+      const interval = setInterval(() => {
+        line.textContent = text.slice(0, i);
+        i++;
+
+        if (i > text.length) {
+          clearInterval(interval);
+          line.style.borderRight = "none";
+          callback();
         }
+      }, 40);
+    }
 
-        input.value = "";
+    function startTerminal() {
+      let index = 0;
+
+      function next() {
+        if (index < terminalLines.length) {
+          typeLine(terminalLines[index], () => {
+            index++;
+            next();
+          });
+        } else {
+          loadCommands();
+        }
       }
-    });
+
+      next();
+    }
+
+    /* LOAD COMMANDS + PASSWORD INPUT */
+    function loadCommands() {
+      const terminal = document.getElementById("terminal");
+
+      const commands = [
+        "mox4real/connect: open_instagram",
+        "mox4real/connect: open_tiktok",
+        "mox4real/connect: send_email",
+        "",
+        "> manual override enabled",
+        "> enter password to unlock hidden node",
+        "",
+        "mox4real/password: "
+      ];
+
+      commands.forEach((cmd, i) => {
+        const line = document.createElement("div");
+        line.classList.add("terminal-line");
+        line.style.animation = "none";
+        line.style.opacity = 1;
+        line.style.width = "auto";
+        line.textContent = cmd;
+        terminal.appendChild(line);
+
+        if (cmd === "mox4real/password: ") {
+          const input = document.createElement("input");
+          input.id = "cmdInput";
+          input.placeholder = "enter command...";
+          line.appendChild(input);
+
+          const feedback = document.createElement("div");
+          feedback.id = "feedback";
+          terminal.appendChild(feedback);
+
+          input.addEventListener("keydown", (e) => {
+            if (e.key === "Enter") {
+              const value = input.value.trim().toLowerCase();
+
+              if (value === "moxx") {
+                feedback.textContent = "> access granted. redirecting...";
+                feedback.style.opacity = 1;
+                document.body.style.animation = "glitchFlash 0.6s";
+
+                setTimeout(() => {
+                  window.location.href = "secret.html";
+                }, 1200);
+              } else {
+                feedback.textContent = "> invalid command";
+                feedback.style.opacity = 1;
+              }
+
+              input.value = "";
+            }
+          });
+        }
+      });
+    }
   </script>
 
 </body>
