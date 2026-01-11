@@ -11,317 +11,112 @@
       margin: 0;
       padding: 0;
       background: #000;
-      color: #c40000;
-      font-family: "Courier New", monospace;
+      color: #b30000;
+      font-family: "Cinzel", "Times New Roman", serif;
       overflow-x: hidden;
-      text-shadow: 0 0 6px #c40000;
-      position: relative;
+      letter-spacing: 0.5px;
     }
 
-    /* STATIC + SCANLINES */
+    /* CINEMATIC VIGNETTE */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: repeating-linear-gradient(
-        to bottom,
-        rgba(255,0,0,0.04) 0px,
-        rgba(255,0,0,0.04) 2px,
-        transparent 2px,
-        transparent 4px
-      );
+      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
       pointer-events: none;
-      z-index: 999;
+      z-index: 5;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/lzszLwAAAABJRU5ErkJggg==");
-      opacity: 0.1;
-      mix-blend-mode: screen;
-      pointer-events: none;
-      z-index: 998;
-    }
-
-    /* LOGO WITH BLOOD DRIP */
+    /* LOGO */
     .logo {
-      font-size: 3.4rem;
-      font-weight: bold;
-      letter-spacing: 8px;
       text-align: center;
-      padding: 35px 0;
-      color: #fff;
+      margin-top: 120px;
+      font-size: 3.8rem;
+      color: #b30000;
       text-transform: uppercase;
-      animation: ghostGlitch 2.4s infinite;
-      text-shadow: 0 0 12px #ff0000;
-      position: relative;
+      letter-spacing: 12px;
+      animation: fadeIn 3s ease-out;
     }
 
+    /* SUBTLE RED GLOW */
     .logo::after {
       content: "";
       position: absolute;
       left: 50%;
-      top: 100%;
-      width: 6px;
-      height: 20px;
-      background: red;
+      top: 180px;
+      width: 260px;
+      height: 40px;
       transform: translateX(-50%);
-      animation: drip 3s infinite;
-      border-radius: 0 0 4px 4px;
-    }
-
-    @keyframes drip {
-      0% { height: 0; opacity: 0; }
-      40% { height: 20px; opacity: 1; }
-      100% { height: 0; opacity: 0; }
-    }
-
-    @keyframes ghostGlitch {
-      0% { text-shadow: 3px 0 red, -3px 0 #600; }
-      15% { text-shadow: -6px 0 red, 6px 0 #600; }
-      30% { text-shadow: 2px -4px red, -2px 4px #600; }
-      45% { text-shadow: 0 0 18px red; }
-      60% { text-shadow: -3px 3px red, 3px -3px #600; }
-      75% { text-shadow: 6px 0 red, -6px 0 #600; }
-      100% { text-shadow: 3px 0 red, -3px 0 #600; }
+      background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 70%);
+      filter: blur(20px);
+      z-index: -1;
     }
 
     /* NAVIGATION */
     nav {
+      margin-top: 80px;
       display: flex;
       justify-content: center;
-      align-items: center;
-      gap: 40px;
-      padding: 15px 0;
-      border-top: 1px solid rgba(255,0,0,0.3);
-      border-bottom: 1px solid rgba(255,0,0,0.3);
-      background: rgba(0,0,0,0.7);
+      gap: 60px;
+      animation: fadeIn 4s ease-out;
     }
 
     nav a {
-      color: #c40000;
+      color: #660000;
       text-decoration: none;
-      font-size: 1.2rem;
-      position: relative;
-      transition: 0.2s;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      transition: color 0.6s ease, text-shadow 0.6s ease;
     }
 
     nav a:hover {
-      color: #ff0000;
-      text-shadow: 0 0 10px red;
+      color: #b30000;
+      text-shadow: 0 0 12px #b30000;
     }
 
-    /* BLOOD DRIP ON NAV LINKS */
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 100%;
-      width: 3px;
-      height: 12px;
-      background: red;
-      transform: translateX(-50%) scaleY(0);
-      transform-origin: top;
-      transition: 0.2s;
-      border-radius: 0 0 3px 3px;
+    /* DIVIDER */
+    .divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4d0000, transparent);
+      margin: 80px auto;
+      animation: fadeIn 5s ease-out;
     }
 
-    nav a:hover::after {
-      transform: translateX(-50%) scaleY(1);
+    /* TAGLINE */
+    .tagline {
+      text-align: center;
+      font-size: 1.3rem;
+      color: #660000;
+      letter-spacing: 3px;
+      animation: fadeIn 6s ease-out;
     }
 
-    /* SEARCH BAR */
-    .secret-search {
-      background: #150000;
-      border: 1px solid rgba(255,0,0,0.4);
-      padding: 6px 10px;
-      color: #ff0000;
-      font-family: "Courier New", monospace;
-      margin-left: 20px;
-      width: 150px;
-      transition: 0.2s;
-    }
-
-    .secret-search:focus {
-      border-color: #ff0000;
-      box-shadow: 0 0 8px red;
-      outline: none;
-    }
-
-    /* CONTENT */
-    .content {
-      max-width: 700px;
-      margin: 40px auto;
-      padding: 0 20px;
-      font-size: 1.25rem;
-      line-height: 1.7;
-    }
-
-    /* SLASH DIVIDER */
-    .bloodline {
-      width: 100%;
-      height: 2px;
-      background: linear-gradient(to right, transparent, red, transparent);
-      margin: 40px 0;
-      opacity: 0.7;
-      transform: skewX(-20deg);
-    }
-
-    /* WHISPER TEXT */
-    .whisper {
-      display: inline-block;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-
-    .whisper:hover {
-      color: #ff0000;
-      text-shadow: 0 0 10px red;
-    }
-
-    @keyframes whisperGlitch {
-      0% { transform: skew(0deg); opacity: 1; }
-      20% { transform: skew(10deg); opacity: 0.6; }
-      40% { transform: skew(-10deg); opacity: 0.8; }
-      60% { transform: skew(6deg); opacity: 0.5; }
-      80% { transform: skew(-6deg); opacity: 0.9; }
-      100% { transform: skew(0deg); opacity: 1; }
-    }
-
-    /* PAGE TRANSITION — KNIFE SLASH */
-    #transition {
-      position: fixed;
-      inset: 0;
-      background: black;
-      pointer-events: none;
-      opacity: 0;
-      z-index: 9999;
-    }
-
-    @keyframes knifeSlash {
-      0% { clip-path: inset(0 100% 0 0); background: white; }
-      50% { clip-path: inset(0 0 0 0); background: red; }
-      100% { clip-path: inset(0 0 0 100%); background: black; }
-    }
-
-    /* SHADOW GHOSTFACE SILHOUETTE */
-    #ghostface {
-      position: fixed;
-      inset: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      pointer-events: none;
-      z-index: 900;
-      transition: opacity 0.1s;
-    }
-
-    #ghostface svg {
-      width: 280px;
-      height: auto;
-      filter: drop-shadow(0 0 20px red);
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- GHOSTFACE SHADOW FIGURE -->
-  <div id="ghostface">
-    <svg viewBox="0 0 200 300" fill="rgba(0,0,0,0.85)">
-      <path d="M100 10 C40 40 20 120 20 200 C20 260 60 290 100 290 C140 290 180 260 180 200 C180 120 160 40 100 10 Z" />
-      <ellipse cx="75" cy="120" rx="18" ry="30" fill="rgba(255,255,255,0.15)" />
-      <ellipse cx="125" cy="120" rx="18" ry="30" fill="rgba(255,255,255,0.15)" />
-      <ellipse cx="100" cy="180" rx="12" ry="20" fill="rgba(255,255,255,0.15)" />
-    </svg>
-  </div>
-
-  <!-- PAGE TRANSITION -->
-  <div id="transition"></div>
-
-  <!-- LOGO -->
   <div class="logo">Mox4Real</div>
 
-  <!-- NAVIGATION -->
   <nav>
-    <a href="index.html">Home</a>
-    <a href="lore.html">Lore</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="experiments.html">Experiments</a>
-    <a href="contact.html">Contact</a>
-    <input type="text" id="secretSearch" placeholder="Search..." class="secret-search">
+    <a href="index.html">HOME</a>
+    <a href="lore.html">LORE</a>
+    <a href="gallery.html">GALLERY</a>
+    <a href="experiments.html">EXPERIMENTS</a>
+    <a href="contact.html">CONTACT</a>
   </nav>
 
-  <!-- CONTENT -->
-  <div class="content">
-    <div class="bloodline"></div>
+  <div class="divider"></div>
 
-    <p>
-      The <span class="whisper">mask</span> is watching.  
-      The <span class="whisper">silhouette</span> moves when you blink.  
-      Do not <span class="whisper">look away</span>.
-    </p>
-
-    <div class="bloodline"></div>
+  <div class="tagline">
+    Something waits in the quiet.
   </div>
-
-  <script>
-    /* WHISPER GLITCH */
-    document.addEventListener("DOMContentLoaded", () => {
-      const words = document.querySelectorAll(".whisper");
-
-      setInterval(() => {
-        const w = words[Math.floor(Math.random() * words.length)];
-        w.style.animation = "whisperGlitch 0.4s";
-        setTimeout(() => w.style.animation = "", 400);
-      }, 2500);
-    });
-
-    /* KNIFE SLASH TRANSITION */
-    document.querySelectorAll("nav a").forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const screen = document.getElementById("transition");
-        screen.style.animation = "knifeSlash 0.4s";
-
-        setTimeout(() => {
-          window.location.href = link.href;
-        }, 400);
-      });
-    });
-
-    /* SECRET SEARCH PASSWORD */
-    document.getElementById("secretSearch").addEventListener("keydown", function(e) {
-      if (e.key === "Enter") {
-        const value = this.value.trim();
-
-        if (value === "Moxxx") {
-          window.location.href = "hidden.html";
-        } else {
-          this.value = "";
-          this.placeholder = "WRONG...";
-          setTimeout(() => this.placeholder = "Search...", 1500);
-        }
-      }
-    });
-
-    /* RANDOM GHOSTFACE BLINK-IN */
-    function ghostBlink() {
-      const ghost = document.getElementById("ghostface");
-      ghost.style.opacity = "1";
-
-      setTimeout(() => {
-        ghost.style.opacity = "0";
-      }, Math.random() * 70 + 80); // 80–150ms
-
-      setTimeout(ghostBlink, Math.random() * 12000 + 8000); // 8–20s
-    }
-
-    ghostBlink();
-  </script>
 
 </body>
 </html>
