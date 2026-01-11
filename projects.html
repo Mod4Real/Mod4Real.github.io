@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects | Mox4Real</title>
+  <title>Projects — Mox4Real</title>
 
   <style>
     body {
@@ -32,21 +32,15 @@
     .logo {
       text-align: center;
       margin-top: 120px;
-      font-size: 3.8rem;
+      font-size: 3.2rem;
       color: #b30000;
       text-transform: uppercase;
-      letter-spacing: 12px;
-      animation: fadeIn 3s ease-out, breathe 6s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0% { text-shadow: 0 0 10px #4d0000; }
-      50% { text-shadow: 0 0 25px #b30000; }
-      100% { text-shadow: 0 0 10px #4d0000; }
+      letter-spacing: 10px;
+      animation: fadeIn 3s ease-out;
     }
 
     nav {
-      margin-top: 80px;
+      margin-top: 60px;
       display: flex;
       justify-content: center;
       gap: 60px;
@@ -58,7 +52,7 @@
       text-decoration: none;
       font-size: 1.1rem;
       letter-spacing: 2px;
-      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
+      transition: 0.4s ease;
     }
 
     nav a:hover {
@@ -71,25 +65,33 @@
       width: 60%;
       height: 1px;
       background: linear-gradient(to right, transparent, #4d0000, transparent);
-      margin: 80px auto;
+      margin: 60px auto;
       animation: fadeIn 5s ease-out;
     }
 
-    .page-title {
-      text-align: center;
-      font-size: 2rem;
-      color: #7a0000;
-      letter-spacing: 4px;
+    .project-container {
+      width: 70%;
+      margin: 0 auto 100px;
       animation: fadeIn 6s ease-out;
-      margin-bottom: 40px;
     }
 
-    .placeholder {
-      text-align: center;
-      color: #660000;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      animation: fadeIn 7s ease-out;
+    .project {
+      margin-bottom: 60px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #330000;
+    }
+
+    .project h2 {
+      font-size: 1.6rem;
+      color: #b30000;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: #7a0000;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     @keyframes fadeIn {
@@ -101,7 +103,7 @@
 
 <body>
 
-  <div class="logo">Mox4Real</div>
+  <div class="logo">PROJECTS</div>
 
   <nav>
     <a href="index.html">FEED</a>
@@ -113,9 +115,36 @@
 
   <div class="divider"></div>
 
-  <div class="page-title">Projects</div>
+  <div class="project-container">
 
-  <div class="placeholder">Experiments. Concepts. Work in progress.</div>
+    <div class="project">
+      <h2>PROJECT‑ECHO</h2>
+      <p>
+        Objective: Study the recurring auditory anomalies found in Case‑017.  
+        Notes: Echoes persist even in soundproof environments.  
+        Current Theory: The source is not external.
+      </p>
+    </div>
+
+    <div class="project">
+      <h2>PROJECT‑REDROOM</h2>
+      <p>
+        Objective: Investigate the unmarked door appearing in multiple locations.  
+        Notes: Door presence correlates with temperature drops and missing time reports.  
+        Status: Field teams refuse further entry attempts.
+      </p>
+    </div>
+
+    <div class="project">
+      <h2>PROJECT‑MIRRORLINE</h2>
+      <p>
+        Objective: Analyze reflective anomalies linked to Evidence‑C09.  
+        Notes: Reflections show entities not present in physical space.  
+        Warning: Personnel advised not to make eye contact with reflections during testing.
+      </p>
+    </div>
+
+  </div>
 
   <script>
     window.addEventListener("load", () => {
