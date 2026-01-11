@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Visuals | Mox4Real</title>
+  <title>Visuals — Mox4Real</title>
 
   <style>
     body {
@@ -32,21 +32,15 @@
     .logo {
       text-align: center;
       margin-top: 120px;
-      font-size: 3.8rem;
+      font-size: 3.2rem;
       color: #b30000;
       text-transform: uppercase;
-      letter-spacing: 12px;
-      animation: fadeIn 3s ease-out, breathe 6s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0% { text-shadow: 0 0 10px #4d0000; }
-      50% { text-shadow: 0 0 25px #b30000; }
-      100% { text-shadow: 0 0 10px #4d0000; }
+      letter-spacing: 10px;
+      animation: fadeIn 3s ease-out;
     }
 
     nav {
-      margin-top: 80px;
+      margin-top: 60px;
       display: flex;
       justify-content: center;
       gap: 60px;
@@ -58,7 +52,7 @@
       text-decoration: none;
       font-size: 1.1rem;
       letter-spacing: 2px;
-      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
+      transition: 0.4s ease;
     }
 
     nav a:hover {
@@ -71,25 +65,33 @@
       width: 60%;
       height: 1px;
       background: linear-gradient(to right, transparent, #4d0000, transparent);
-      margin: 80px auto;
+      margin: 60px auto;
       animation: fadeIn 5s ease-out;
     }
 
-    .page-title {
-      text-align: center;
-      font-size: 2rem;
-      color: #7a0000;
-      letter-spacing: 4px;
+    .visuals-container {
+      width: 70%;
+      margin: 0 auto 100px;
       animation: fadeIn 6s ease-out;
-      margin-bottom: 40px;
     }
 
-    .placeholder {
-      text-align: center;
-      color: #660000;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      animation: fadeIn 7s ease-out;
+    .visual {
+      margin-bottom: 60px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #330000;
+    }
+
+    .visual h2 {
+      font-size: 1.6rem;
+      color: #b30000;
+      letter-spacing: 3px;
+      margin-bottom: 10px;
+    }
+
+    .visual p {
+      color: #7a0000;
+      font-size: 1rem;
+      line-height: 1.6;
     }
 
     @keyframes fadeIn {
@@ -101,7 +103,7 @@
 
 <body>
 
-  <div class="logo">Mox4Real</div>
+  <div class="logo">VISUALS</div>
 
   <nav>
     <a href="index.html">FEED</a>
@@ -113,9 +115,35 @@
 
   <div class="divider"></div>
 
-  <div class="page-title">Visuals</div>
+  <div class="visuals-container">
 
-  <div class="placeholder">Images. Frames. Evidence. Coming soon.</div>
+    <div class="visual">
+      <h2>EVIDENCE‑A01: “Stairwell Capture”</h2>
+      <p>
+        Description: A dim stairwell lit by a single flickering bulb.  
+        A shadow appears on the landing despite no visible source.  
+        Investigators report feeling watched while reviewing the file.
+      </p>
+    </div>
+
+    <div class="visual">
+      <h2>EVIDENCE‑B14: “Unmarked Doorway”</h2>
+      <p>
+        Description: A door with no frame, hinges, or handle.  
+        The wall texture bends unnaturally around it.  
+        Audio notes mention scratching from the other side.
+      </p>
+    </div>
+
+    <div class="visual">
+      <h2>EVIDENCE‑C09: “Figure in Reflection”</h2>
+      <p>
+        Description: A bathroom mirror fogged over except for a handprint.  
+        A silhouette stands behind the photographer, but no one else was present.
+      </p>
+    </div>
+
+  </div>
 
   <script>
     window.addEventListener("load", () => {
