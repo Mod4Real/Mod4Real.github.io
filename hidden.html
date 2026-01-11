@@ -1,1 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classified File</title>
 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      overflow-x: hidden;
+      text-align: center;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 3rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      animation: glitch 2s infinite;
+    }
+
+    @keyframes glitch {
+      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+      20% { text-shadow: -3px 1px red, 3px -1px #0ff; }
+      40% { text-shadow: 1px -3px red, -1px 3px #0ff; }
+      60% { text-shadow: -2px 2px #0ff; }
+      80% { text-shadow: 3px 0 red, -3px 0 #0ff; }
+      100% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+    }
+
+    .bloodline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, red, transparent);
+      margin: 40px 0;
+      opacity: 0.6;
+    }
+
+    p {
+      max-width: 700px;
+      margin: 20px auto;
+      line-height: 1.7;
+      font-size: 1.2rem;
+    }
+
+    .whisper {
+      transition: 0.2s;
+    }
+
+    .whisper:hover {
+      color: red;
+      text-shadow: 0 0 6px red;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>ACCESS GRANTED</h1>
+  <div class="bloodline"></div>
+
+  <p>
+    You were not meant to find this.  
+    The <span class="whisper">signal</span> is aware of your presence.  
+    Proceed only if you accept the consequences.
+  </p>
+
+  <div class="bloodline"></div>
+
+  <p>
+    More files will unlock soon.  
+    It is watching.
+  </p>
+
+</body>
+</html>
