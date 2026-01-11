@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Case Files | Mox4Real</title>
+  <title>Case Files — Mox4Real</title>
 
   <style>
     body {
@@ -18,7 +18,9 @@
       transition: opacity 0.8s ease;
     }
 
-    body.loaded { opacity: 1; }
+    body.loaded {
+      opacity: 1;
+    }
 
     body::before {
       content: "";
@@ -29,67 +31,47 @@
       z-index: 5;
     }
 
-    .logo {
+    .header {
       text-align: center;
-      margin-top: 120px;
-      font-size: 3.8rem;
+      margin-top: 100px;
+      font-size: 3rem;
+      letter-spacing: 10px;
       color: #b30000;
-      text-transform: uppercase;
-      letter-spacing: 12px;
-      animation: fadeIn 3s ease-out, breathe 6s ease-in-out infinite;
-    }
-
-    @keyframes breathe {
-      0% { text-shadow: 0 0 10px #4d0000; }
-      50% { text-shadow: 0 0 25px #b30000; }
-      100% { text-shadow: 0 0 10px #4d0000; }
-    }
-
-    nav {
-      margin-top: 80px;
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      animation: fadeIn 4s ease-out;
-    }
-
-    nav a {
-      color: #660000;
-      text-decoration: none;
-      font-size: 1.1rem;
-      letter-spacing: 2px;
-      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
-    }
-
-    nav a:hover {
-      color: #b30000;
-      text-shadow: 0 0 12px #b30000;
-      transform: translateY(-3px);
+      animation: fadeIn 2s ease-out;
     }
 
     .divider {
       width: 60%;
       height: 1px;
       background: linear-gradient(to right, transparent, #4d0000, transparent);
-      margin: 80px auto;
-      animation: fadeIn 5s ease-out;
+      margin: 40px auto 60px;
+      animation: fadeIn 3s ease-out;
     }
 
-    .page-title {
-      text-align: center;
-      font-size: 2rem;
+    .case-container {
+      width: 70%;
+      margin: 0 auto 80px;
+      animation: fadeIn 4s ease-out;
+    }
+
+    .case {
+      margin-bottom: 60px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #330000;
+    }
+
+    .case h2 {
+      font-size: 1.6rem;
+      color: #b30000;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+
+    .case p {
       color: #7a0000;
-      letter-spacing: 4px;
-      animation: fadeIn 6s ease-out;
-      margin-bottom: 40px;
-    }
-
-    .placeholder {
-      text-align: center;
-      color: #660000;
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      animation: fadeIn 7s ease-out;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 6px 0;
     }
 
     @keyframes fadeIn {
@@ -101,34 +83,103 @@
 
 <body>
 
-  <div class="logo">Mox4Real</div>
-
-  <nav>
-    <a href="index.html">FEED</a>
-    <a href="case-files.html">CASE FILES</a>
-    <a href="visuals.html">VISUALS</a>
-    <a href="projects.html">PROJECTS</a>
-    <a href="connect.html">CONNECT</a>
-  </nav>
-
+  <div class="header">CASE FILES</div>
   <div class="divider"></div>
 
-  <div class="page-title">Case Files</div>
+  <div class="case-container">
 
-  <div class="placeholder">Your investigations begin here.</div>
+    <!-- CASE 001 -->
+    <div class="case">
+      <h2>CASE‑001: “The Corridor Recording”</h2>
+      <p><strong>Status:</strong> Unresolved</p>
+      <p><strong>Date Recovered:</strong> 03/14/2019</p>
+      <p>
+        Security footage from an abandoned hospital wing shows a figure standing at the far end of the corridor.
+        The camera timestamp loops between <strong>03:12:09</strong> and <strong>03:12:10</strong>, but the figure’s position changes each cycle.
+        Audio track contains breathing not belonging to the investigator.
+      </p>
+    </div>
+
+    <!-- CASE 004 -->
+    <div class="case">
+      <h2>CASE‑004: “Subject ████”</h2>
+      <p><strong>Status:</strong> Classified</p>
+      <p><strong>Date Logged:</strong> 11/02/2021</p>
+      <p>
+        Interview transcript corrupted beyond repair. Only one line remains intact:
+        <em>“It followed me out. I didn’t think it could.”</em>
+        Subject disappeared 48 hours later. No forced entry. No exit footage.
+      </p>
+    </div>
+
+    <!-- CASE 017 -->
+    <div class="case">
+      <h2>CASE‑017: “The Echoing Room”</h2>
+      <p><strong>Status:</strong> Unresolved</p>
+      <p><strong>Date Logged:</strong> 07/29/2018</p>
+      <p>
+        Room 3B emits a continuous audio loop despite having no power.
+        Loop contains a voice whispering the investigator’s name, even when a different investigator enters.
+        Attempts to record the phenomenon result in blank files.
+      </p>
+    </div>
+
+    <!-- CASE 023 -->
+    <div class="case">
+      <h2>CASE‑023: “Redacted Photograph”</h2>
+      <p><strong>Status:</strong> Archived</p>
+      <p><strong>Date Recovered:</strong> 01/06/2020</p>
+      <p>
+        Polaroid found inside an evidence locker with no case number.
+        Image shows a living room interior.
+        A second figure appears reflected in the TV screen — but not in the room itself.
+        Reflection blinks.
+      </p>
+    </div>
+
+    <!-- CASE 031 -->
+    <div class="case">
+      <h2>CASE‑031: “The Missing Pages”</h2>
+      <p><strong>Status:</strong> Ongoing</p>
+      <p><strong>Date Logged:</strong> 09/18/2022</p>
+      <p>
+        Case file originally contained 42 pages. Only 17 remain.
+        Remaining pages reference events that never occurred, locations that don’t exist,
+        and a name that has been manually scratched out on every page.
+        Scratch marks are fresh.
+      </p>
+    </div>
+
+    <!-- CASE 044 -->
+    <div class="case">
+      <h2>CASE‑044: “The Door That Wasn’t There”</h2>
+      <p><strong>Status:</strong> Closed — Pending Review</p>
+      <p><strong>Date Logged:</strong> 12/11/2017</p>
+      <p>
+        Investigators report a door appearing in the north hallway for 6 minutes before vanishing.
+        Thermal scans show a human‑shaped heat signature behind where the door used to be.
+        No entry point found.
+      </p>
+    </div>
+
+    <!-- CASE 052 -->
+    <div class="case">
+      <h2>CASE‑052: “Audio File 9B”</h2>
+      <p><strong>Status:</strong> Unresolved</p>
+      <p><strong>Date Logged:</strong> 04/03/2023</p>
+      <p>
+        Recovered audio contains 14 seconds of static followed by a whisper:
+        <em>“Don’t let them close the file.”</em>
+        Voice does not match any known subject or investigator.
+        File metadata shows it was created <strong>tomorrow</strong>.
+      </p>
+    </div>
+
+  </div>
 
   <script>
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
-    });
-
-    document.querySelectorAll("nav a").forEach(link => {
-      link.addEventListener("click", e => {
-        e.preventDefault();
-        const url = link.getAttribute("href");
-        document.body.style.opacity = "0";
-        setTimeout(() => { window.location.href = url; }, 800);
-      });
     });
   </script>
 
