@@ -6,74 +6,89 @@
   <title>Mox4Real</title>
 
   <style>
+    /* GLOBAL */
     body {
       margin: 0;
       padding: 0;
       background: #000;
-      color: #e0e0e0;
+      color: #0f0;
       font-family: "Courier New", monospace;
       overflow-x: hidden;
+      text-shadow: 0 0 4px #0f0;
     }
 
+    /* CRT SCANLINES */
     body::before {
       content: "";
       position: fixed;
       inset: 0;
-      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,255,0,0.03) 0px,
+        rgba(0,255,0,0.03) 2px,
+        transparent 2px,
+        transparent 4px
+      );
       pointer-events: none;
-      z-index: -1;
+      z-index: 999;
+    }
+
+    /* STATIC NOISE */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mP8/5+hHgAHggJ/lzszLwAAAABJRU5ErkJggg==");
+      opacity: 0.08;
+      mix-blend-mode: screen;
+      pointer-events: none;
+      z-index: 998;
     }
 
     /* LOGO */
     .logo {
       font-size: 3rem;
       font-weight: bold;
-      letter-spacing: 6px;
+      letter-spacing: 8px;
       text-align: center;
-      padding: 25px 0;
-      color: white;
+      padding: 30px 0;
+      color: #0f0;
       text-transform: uppercase;
-      animation: logoGlitch 2s infinite;
+      animation: glitch 2s infinite;
     }
 
-    @keyframes logoGlitch {
-      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
-      10% { text-shadow: -4px 2px red, 4px -2px #0ff; }
-      20% { text-shadow: 2px -4px red, -2px 4px #0ff; }
-      30% { text-shadow: -2px 4px red, 2px -4px #0ff; }
-      40% { text-shadow: 4px -2px red, -4px 2px #0ff; }
-      50% { text-shadow: 0 0 12px red; }
-      60% { text-shadow: -2px -2px #0ff; }
-      70% { text-shadow: 2px 2px red; }
-      80% { text-shadow: -4px 0 red, 4px 0 #0ff; }
-      100% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+    @keyframes glitch {
+      0% { text-shadow: 2px 0 #0f0, -2px 0 #0a0; }
+      20% { text-shadow: -4px 0 #0f0, 4px 0 #0a0; }
+      40% { text-shadow: 2px -2px #0f0, -2px 2px #0a0; }
+      60% { text-shadow: 0 0 12px #0f0; }
+      80% { text-shadow: -2px 2px #0f0, 2px -2px #0a0; }
+      100% { text-shadow: 2px 0 #0f0, -2px 0 #0a0; }
     }
 
-    /* NAV BAR */
+    /* NAVIGATION */
     nav {
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 40px;
+      gap: 35px;
       padding: 15px 0;
-      border-top: 1px solid rgba(255,0,0,0.3);
-      border-bottom: 1px solid rgba(255,0,0,0.3);
-      margin-bottom: 40px;
-      background: rgba(0,0,0,0.6);
-      backdrop-filter: blur(3px);
+      border-top: 1px solid rgba(0,255,0,0.3);
+      border-bottom: 1px solid rgba(0,255,0,0.3);
+      background: rgba(0,0,0,0.7);
     }
 
     nav a {
-      color: #e0e0e0;
+      color: #0f0;
       text-decoration: none;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       position: relative;
       transition: 0.2s;
     }
 
     nav a:hover {
-      color: red;
-      text-shadow: 0 0 8px red;
+      color: #9f9;
+      text-shadow: 0 0 8px #0f0;
     }
 
     nav a::after {
@@ -83,7 +98,7 @@
       bottom: -4px;
       width: 100%;
       height: 2px;
-      background: red;
+      background: #0f0;
       transform: scaleX(0);
       transition: transform 0.2s ease-out;
     }
@@ -92,21 +107,21 @@
       transform: scaleX(1);
     }
 
-    /* SECRET SEARCH BAR */
+    /* DARK-WEB SEARCH NODE */
     .secret-search {
-      background: #111;
-      border: 1px solid rgba(255,0,0,0.4);
+      background: #020;
+      border: 1px solid rgba(0,255,0,0.4);
       padding: 6px 10px;
-      color: #e0e0e0;
+      color: #0f0;
       font-family: "Courier New", monospace;
       margin-left: 20px;
-      width: 140px;
+      width: 150px;
       transition: 0.2s;
     }
 
     .secret-search:focus {
-      border-color: red;
-      box-shadow: 0 0 6px red;
+      border-color: #0f0;
+      box-shadow: 0 0 6px #0f0;
       outline: none;
     }
 
@@ -119,24 +134,25 @@
       line-height: 1.7;
     }
 
-    /* BLOODLINE */
+    /* GREEN LINE DIVIDER */
     .bloodline {
       width: 100%;
       height: 2px;
-      background: linear-gradient(to right, transparent, red, transparent);
+      background: linear-gradient(to right, transparent, #0f0, transparent);
       margin: 40px 0;
-      opacity: 0.6;
+      opacity: 0.5;
     }
 
     /* WHISPER TEXT */
     .whisper {
       display: inline-block;
       transition: 0.2s;
+      cursor: pointer;
     }
 
     .whisper:hover {
-      color: red;
-      text-shadow: 0 0 6px red;
+      color: #9f9;
+      text-shadow: 0 0 6px #0f0;
     }
 
     @keyframes whisperGlitch {
@@ -152,7 +168,7 @@
     #transition {
       position: fixed;
       inset: 0;
-      background: black;
+      background: #000;
       pointer-events: none;
       opacity: 0;
       z-index: 9999;
@@ -185,7 +201,7 @@
     <a href="contact.html">Contact</a>
 
     <!-- SECRET SEARCH BAR -->
-    <input type="text" id="secretSearch" placeholder="Search..." class="secret-search">
+    <input type="text" id="secretSearch" placeholder="Query Node..." class="secret-search">
   </nav>
 
   <!-- CONTENT -->
@@ -193,9 +209,9 @@
     <div class="bloodline"></div>
 
     <p>
-      The <span class="whisper">signal</span> is unstable.  
-      Something is <span class="whisper">listening</span>.  
-      Do not <span class="whisper">trust</span> what you see.
+      The <span class="whisper">signal</span> is corrupted.  
+      A foreign <span class="whisper">observer</span> is active.  
+      Maintain <span class="whisper">caution</span> during transmission.
     </p>
 
     <div class="bloodline"></div>
@@ -235,8 +251,8 @@
           window.location.href = "hidden.html";
         } else {
           this.value = "";
-          this.placeholder = "No results found";
-          setTimeout(() => this.placeholder = "Search...", 1500);
+          this.placeholder = "ACCESS DENIED";
+          setTimeout(() => this.placeholder = "Query Node...", 1500);
         }
       }
     });
