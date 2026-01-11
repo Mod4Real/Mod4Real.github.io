@@ -146,6 +146,30 @@
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
     }
+
+    /* INPUT FIELD */
+    #cmdInput {
+      width: 80%;
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #4d0000;
+      color: #b30000;
+      font-size: 1.1rem;
+      padding: 8px;
+      outline: none;
+      letter-spacing: 2px;
+      margin-top: 10px;
+    }
+
+    #cmdInput::placeholder {
+      color: #330000;
+    }
+
+    #feedback {
+      margin-top: 10px;
+      color: #4d0000;
+      letter-spacing: 2px;
+    }
   </style>
 </head>
 
@@ -173,19 +197,31 @@
     <br>
 
     <div class="line">
-      <span class="prompt">mox4real/connect:</span> 
+      <span class="prompt">mox4real/connect:</span>
       <a class="cmd-link" href="https://instagram.com/" target="_blank">open_instagram</a>
     </div>
 
     <div class="line">
-      <span class="prompt">mox4real/connect:</span> 
+      <span class="prompt">mox4real/connect:</span>
       <a class="cmd-link" href="https://tiktok.com/" target="_blank">open_tiktok</a>
     </div>
 
     <div class="line">
-      <span class="prompt">mox4real/connect:</span> 
+      <span class="prompt">mox4real/connect:</span>
       <a class="cmd-link" href="mailto:your@email.com">send_email</a>
     </div>
+
+    <br><br>
+
+    <div class="line">> manual override enabled</div>
+    <div class="line">> enter password to unlock hidden node</div>
+
+    <div class="line">
+      <span class="prompt">mox4real/password:</span>
+      <input id="cmdInput" type="text" placeholder="enter command...">
+    </div>
+
+    <div id="feedback" class="line"></div>
 
   </div>
 
@@ -201,6 +237,26 @@
         document.body.style.opacity = "0";
         setTimeout(() => { window.location.href = url; }, 800);
       });
+    });
+
+    const input = document.getElementById("cmdInput");
+    const feedback = document.getElementById("feedback");
+
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const cmd = input.value.trim().toLowerCase();
+
+        if (cmd === "moxxx") {
+          feedback.textContent = "> access granted. redirecting...";
+          setTimeout(() => {
+            window.location.href = "secret.html";
+          }, 1200);
+        } else {
+          feedback.textContent = "> invalid command";
+        }
+
+        input.value = "";
+      }
     });
   </script>
 
