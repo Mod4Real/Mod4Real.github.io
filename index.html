@@ -222,21 +222,43 @@
         }, 600);
       });
     });
-  </script>
-// SECRET SEARCH PASSWORD
-document.getElementById("secretSearch").addEventListener("keydown", function(e) {
-  if (e.key === "Enter") {
-    const value = this.value.trim();
+   <script>
+    // WHISPER EFFECT
+    document.addEventListener("DOMContentLoaded", () => {
+      const words = document.querySelectorAll(".whisper");
 
-    if (value === "Moxxx") {
-      window.location.href = "hidden.html"; 
-    } else {
-      this.value = "";
-      this.placeholder = "No results found";
-      setTimeout(() => this.placeholder = "Search...", 1500);
-    }
-  }
-});
-  
-</body>
-</html>
+      setInterval(() => {
+        const w = words[Math.floor(Math.random() * words.length)];
+        w.style.animation = "whisperGlitch 0.4s";
+        setTimeout(() => w.style.animation = "", 400);
+      }, 2500);
+    });
+
+    // PAGE TRANSITION
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const screen = document.getElementById("transition");
+        screen.style.animation = "staticFlash 0.6s";
+
+        setTimeout(() => {
+          window.location.href = link.href;
+        }, 600);
+      });
+    });
+
+    // SECRET SEARCH PASSWORD
+    document.getElementById("secretSearch").addEventListener("keydown", function(e) {
+      if (e.key === "Enter") {
+        const value = this.value.trim();
+
+        if (value === "Moxxx") {
+          window.location.href = "hidden.html";
+        } else {
+          this.value = "";
+          this.placeholder = "No results found";
+          setTimeout(() => this.placeholder = "Search...", 1500);
+        }
+      }
+    });
+  </script>
