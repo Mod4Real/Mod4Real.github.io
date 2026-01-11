@@ -15,6 +15,12 @@
       font-family: "Cinzel", "Times New Roman", serif;
       overflow-x: hidden;
       letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
     }
 
     /* CINEMATIC VIGNETTE */
@@ -35,21 +41,13 @@
       color: #b30000;
       text-transform: uppercase;
       letter-spacing: 12px;
-      animation: fadeIn 3s ease-out;
+      animation: fadeIn 3s ease-out, breathe 6s ease-in-out infinite;
     }
 
-    /* SUBTLE RED GLOW */
-    .logo::after {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 180px;
-      width: 260px;
-      height: 40px;
-      transform: translateX(-50%);
-      background: radial-gradient(circle, rgba(255,0,0,0.15), transparent 70%);
-      filter: blur(20px);
-      z-index: -1;
+    @keyframes breathe {
+      0% { text-shadow: 0 0 10px #4d0000; }
+      50% { text-shadow: 0 0 25px #b30000; }
+      100% { text-shadow: 0 0 10px #4d0000; }
     }
 
     /* NAVIGATION */
@@ -66,12 +64,13 @@
       text-decoration: none;
       font-size: 1.1rem;
       letter-spacing: 2px;
-      transition: color 0.6s ease, text-shadow 0.6s ease;
+      transition: color 0.4s ease, text-shadow 0.4s ease, transform 0.4s ease;
     }
 
     nav a:hover {
       color: #b30000;
       text-shadow: 0 0 12px #b30000;
+      transform: translateY(-3px);
     }
 
     /* DIVIDER */
@@ -83,7 +82,7 @@
       animation: fadeIn 5s ease-out;
     }
 
-    /* TAGLINE */
+    /* TEXT BLOCKS */
     .tagline {
       text-align: center;
       font-size: 1.3rem;
@@ -93,7 +92,6 @@
       margin-bottom: 20px;
     }
 
-    /* SUBTAGLINE */
     .subtagline {
       text-align: center;
       font-size: 1.1rem;
@@ -103,7 +101,6 @@
       margin-bottom: 60px;
     }
 
-    /* MAIN LINE */
     .mainline {
       text-align: center;
       font-size: 1.25rem;
@@ -138,6 +135,25 @@
   <div class="subtagline">Welcome to the archive.</div>
 
   <div class="mainline">Every scream leaves an echo. Some never fade.</div>
+
+  <script>
+    /* PAGE FADE-IN */
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    /* PAGE FADE-OUT ON LINK CLICK */
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const url = link.getAttribute("href");
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
+      });
+    });
+  </script>
 
 </body>
 </html>
