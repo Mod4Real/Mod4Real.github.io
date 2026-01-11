@@ -14,7 +14,23 @@
       font-family: "Courier New", monospace;
       overflow-x: hidden;
     }
+.secret-search {
+  background: #111;
+  border: 1px solid rgba(255,0,0,0.4);
+  padding: 6px 10px;
+  color: #e0e0e0;
+  font-family: "Courier New", monospace;
+  margin-left: 20px;
+  width: 140px;
+  transition: 0.2s;
+}
 
+.secret-search:focus {
+  border-color: red;
+  box-shadow: 0 0 6px red;
+  outline: none;
+}
+    
     body::before {
       content: "";
       position: fixed;
@@ -158,13 +174,16 @@
   <div class="logo">Mox4Real</div>
 
   <!-- NAVIGATION -->
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="lore.html">Lore</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="experiments.html">Experiments</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+ <nav>
+  <a href="index.html">Home</a>
+  <a href="lore.html">Lore</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="experiments.html">Experiments</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- SECRET SEARCH BAR -->
+  <input type="text" id="secretSearch" placeholder="Search..." class="secret-search">
+</nav>
 
   <!-- CONTENT -->
   <div class="content">
@@ -204,6 +223,20 @@
       });
     });
   </script>
+// SECRET SEARCH PASSWORD
+document.getElementById("secretSearch").addEventListener("keydown", function(e) {
+  if (e.key === "Enter") {
+    const value = this.value.trim();
 
+    if (value === "Moxxx") {
+      window.location.href = "hidden.html"; 
+    } else {
+      this.value = "";
+      this.placeholder = "No results found";
+      setTimeout(() => this.placeholder = "Search...", 1500);
+    }
+  }
+});
+  
 </body>
 </html>
