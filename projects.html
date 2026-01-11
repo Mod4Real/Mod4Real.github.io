@@ -79,6 +79,9 @@
       margin-bottom: 60px;
       padding-bottom: 30px;
       border-bottom: 1px solid #330000;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s ease;
     }
 
     .project h2 {
@@ -92,6 +95,37 @@
       color: #7a0000;
       font-size: 1rem;
       line-height: 1.6;
+    }
+
+    /* Expandable toggle icon */
+    .project::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.4rem;
+      color: #4d0000;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .project.open::after {
+      content: "–";
+      color: #b30000;
+      transform: rotate(180deg);
+    }
+
+    /* Hidden details */
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.4s ease;
+      margin-top: 10px;
+    }
+
+    .project.open .details {
+      max-height: 500px;
+      opacity: 1;
     }
 
     @keyframes fadeIn {
@@ -117,31 +151,52 @@
 
   <div class="project-container">
 
+    <!-- PROJECT ECHO -->
     <div class="project">
       <h2>PROJECT‑ECHO</h2>
       <p>
-        Objective: Study the recurring auditory anomalies found in Case‑017.  
-        Notes: Echoes persist even in soundproof environments.  
+        Objective: Study the recurring auditory anomalies found in Case‑017.<br>
+        Notes: Echoes persist even in soundproof environments.<br>
         Current Theory: The source is not external.
       </p>
+
+      <div class="details">
+        <p><strong>Log‑04:</strong> Echo responded to its own playback.</p>
+        <p><strong>Log‑07:</strong> Technician reported hearing their name whispered.</p>
+        <p><strong>Warning:</strong> Personnel advised not to remain alone in the chamber.</p>
+      </div>
     </div>
 
+    <!-- PROJECT REDROOM -->
     <div class="project">
       <h2>PROJECT‑REDROOM</h2>
       <p>
-        Objective: Investigate the unmarked door appearing in multiple locations.  
-        Notes: Door presence correlates with temperature drops and missing time reports.  
+        Objective: Investigate the unmarked door appearing in multiple locations.<br>
+        Notes: Door presence correlates with temperature drops and missing time reports.<br>
         Status: Field teams refuse further entry attempts.
       </p>
+
+      <div class="details">
+        <p><strong>Incident‑12:</strong> Door appeared inside a secured facility with no recorded entry.</p>
+        <p><strong>Observation:</strong> Scratches on the inside surface continue to increase.</p>
+        <p><strong>Warning:</strong> Do not approach if humming is audible.</p>
+      </div>
     </div>
 
+    <!-- PROJECT MIRRORLINE -->
     <div class="project">
       <h2>PROJECT‑MIRRORLINE</h2>
       <p>
-        Objective: Analyze reflective anomalies linked to Evidence‑C09.  
-        Notes: Reflections show entities not present in physical space.  
+        Objective: Analyze reflective anomalies linked to Evidence‑C09.<br>
+        Notes: Reflections show entities not present in physical space.<br>
         Warning: Personnel advised not to make eye contact with reflections during testing.
       </p>
+
+      <div class="details">
+        <p><strong>Log‑02:</strong> Reflection continued moving after subject stepped away.</p>
+        <p><strong>Log‑05:</strong> Entity observed mimicking personnel incorrectly.</p>
+        <p><strong>Warning:</strong> If reflection smiles, evacuate immediately.</p>
+      </div>
     </div>
 
   </div>
@@ -157,6 +212,13 @@
         const url = link.getAttribute("href");
         document.body.style.opacity = "0";
         setTimeout(() => { window.location.href = url; }, 800);
+      });
+    });
+
+    // Expandable project sections
+    document.querySelectorAll(".project").forEach(project => {
+      project.addEventListener("click", () => {
+        project.classList.toggle("open");
       });
     });
   </script>
