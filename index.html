@@ -198,6 +198,206 @@
     <div class="bloodline"></div>
   </div>
 
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mox4Real</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #e0e0e0;
+      font-family: "Courier New", monospace;
+      overflow-x: hidden;
+    }
+.secret-search {
+  background: #111;
+  border: 1px solid rgba(255,0,0,0.4);
+  padding: 6px 10px;
+  color: #e0e0e0;
+  font-family: "Courier New", monospace;
+  margin-left: 20px;
+  width: 140px;
+  transition: 0.2s;
+}
+
+.secret-search:focus {
+  border-color: red;
+  box-shadow: 0 0 6px red;
+  outline: none;
+}
+    
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%);
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    /* LOGO */
+    .logo {
+      font-size: 3rem;
+      font-weight: bold;
+      letter-spacing: 6px;
+      text-align: center;
+      padding: 25px 0;
+      color: white;
+      text-transform: uppercase;
+      animation: logoGlitch 2s infinite;
+    }
+
+    @keyframes logoGlitch {
+      0% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+      10% { text-shadow: -4px 2px red, 4px -2px #0ff; }
+      20% { text-shadow: 2px -4px red, -2px 4px #0ff; }
+      30% { text-shadow: -2px 4px red, 2px -4px #0ff; }
+      40% { text-shadow: 4px -2px red, -4px 2px #0ff; }
+      50% { text-shadow: 0 0 12px red; }
+      60% { text-shadow: -2px -2px #0ff; }
+      70% { text-shadow: 2px 2px red; }
+      80% { text-shadow: -4px 0 red, 4px 0 #0ff; }
+      100% { text-shadow: 2px 2px red, -2px -2px #0ff; }
+    }
+
+    /* NAV BAR */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 15px 0;
+      border-top: 1px solid rgba(255,0,0,0.3);
+      border-bottom: 1px solid rgba(255,0,0,0.3);
+      margin-bottom: 40px;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(3px);
+    }
+
+    nav a {
+      color: #e0e0e0;
+      text-decoration: none;
+      font-size: 1.2rem;
+      position: relative;
+      transition: 0.2s;
+    }
+
+    nav a:hover {
+      color: red;
+      text-shadow: 0 0 8px red;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -4px;
+      width: 100%;
+      height: 2px;
+      background: red;
+      transform: scaleX(0);
+      transition: transform 0.2s ease-out;
+    }
+
+    nav a:hover::after {
+      transform: scaleX(1);
+    }
+
+    /* CONTENT */
+    .content {
+      max-width: 700px;
+      margin: 40px auto;
+      padding: 0 20px;
+      font-size: 1.2rem;
+      line-height: 1.7;
+    }
+
+    /* BLOODLINE */
+    .bloodline {
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(to right, transparent, red, transparent);
+      margin: 40px 0;
+      opacity: 0.6;
+    }
+
+    /* WHISPER TEXT */
+    .whisper {
+      display: inline-block;
+      transition: 0.2s;
+    }
+
+    .whisper:hover {
+      color: red;
+      text-shadow: 0 0 6px red;
+    }
+
+    @keyframes whisperGlitch {
+      0% { transform: skew(0deg); opacity: 1; }
+      20% { transform: skew(8deg); opacity: 0.6; }
+      40% { transform: skew(-8deg); opacity: 0.8; }
+      60% { transform: skew(4deg); opacity: 0.5; }
+      80% { transform: skew(-4deg); opacity: 0.9; }
+      100% { transform: skew(0deg); opacity: 1; }
+    }
+
+    /* PAGE TRANSITION */
+    #transition {
+      position: fixed;
+      inset: 0;
+      background: black;
+      pointer-events: none;
+      opacity: 0;
+      z-index: 9999;
+    }
+
+    @keyframes staticFlash {
+      0% { opacity: 0; }
+      20% { opacity: 1; }
+      40% { opacity: 0.4; }
+      60% { opacity: 1; }
+      100% { opacity: 0; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- PAGE TRANSITION OVERLAY -->
+  <div id="transition"></div>
+
+  <!-- LOGO -->
+  <div class="logo">Mox4Real</div>
+
+  <!-- NAVIGATION -->
+ <nav>
+  <a href="index.html">Home</a>
+  <a href="lore.html">Lore</a>
+  <a href="gallery.html">Gallery</a>
+  <a href="experiments.html">Experiments</a>
+  <a href="contact.html">Contact</a>
+
+  <!-- SECRET SEARCH BAR -->
+  <input type="text" id="secretSearch" placeholder="Search..." class="secret-search">
+</nav>
+
+  <!-- CONTENT -->
+  <div class="content">
+    <div class="bloodline"></div>
+
+    <p>
+      The <span class="whisper">signal</span> is unstable.  
+      Something is <span class="whisper">listening</span>.  
+      Do not <span class="whisper">trust</span> what you see.
+    </p>
+
+    <div class="bloodline"></div>
+  </div>
+
   <script>
     // WHISPER EFFECT
     document.addEventListener("DOMContentLoaded", () => {
