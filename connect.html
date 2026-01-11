@@ -20,64 +20,21 @@
 
     body.loaded { opacity: 1; }
 
-    /* VIGNETTE */
+    /* CRT EFFECT */
     body::before {
       content: "";
-      position: fixed;
-      inset: 0;
-      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
-      pointer-events: none;
-      z-index: 5;
-    }
-
-    /* RECORDING OVERLAY */
-    .rec-overlay {
-      position: fixed;
-      top: 20px;
-      right: 30px;
-      color: #b30000;
-      font-size: 1rem;
-      letter-spacing: 2px;
-      z-index: 999;
-      opacity: 0.8;
-      animation: fadeIn 3s ease-out;
-    }
-
-    .rec-dot {
-      display: inline-block;
-      width: 10px;
-      height: 10px;
-      background: #b30000;
-      border-radius: 50%;
-      margin-right: 8px;
-      animation: blink 1.2s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 0.2; }
-      50% { opacity: 1; }
-    }
-
-    /* STATIC LINES */
-    .static-lines {
       position: fixed;
       inset: 0;
       background: repeating-linear-gradient(
         to bottom,
         rgba(255, 0, 0, 0.03) 0px,
-        rgba(255, 0, 0, 0.03) 1px,
-        transparent 2px,
-        transparent 4px
+        rgba(255, 0, 0, 0.03) 2px,
+        transparent 3px,
+        transparent 6px
       );
       pointer-events: none;
-      z-index: 3;
+      z-index: 5;
       opacity: 0.25;
-      animation: staticPulse 6s infinite;
-    }
-
-    @keyframes staticPulse {
-      0%, 100% { opacity: 0.15; }
-      50% { opacity: 0.3; }
     }
 
     /* LOGO */
@@ -123,56 +80,66 @@
       animation: fadeIn 5s ease-out;
     }
 
-    /* CONNECT SECTION */
-    .connect-container {
+    /* TERMINAL CONTAINER */
+    .terminal {
       width: 70%;
       margin: 0 auto 100px;
-      text-align: center;
       animation: fadeIn 6s ease-out;
+      font-family: "Courier New", monospace;
+      color: #b30000;
+      font-size: 1.1rem;
     }
 
-    .status-line {
+    .line {
+      margin: 18px 0;
+      letter-spacing: 2px;
+    }
+
+    .prompt {
       color: #4d0000;
-      font-size: 1rem;
-      letter-spacing: 3px;
-      margin-bottom: 40px;
-      opacity: 0.8;
-      animation: flicker 5s infinite;
     }
 
-    @keyframes flicker {
-      0%, 100% { opacity: 0.8; }
-      50% { opacity: 0.4; }
-    }
-
-    .connect-container a {
-      display: block;
-      margin: 25px 0;
+    /* COMMAND LINKS */
+    .cmd-link {
       color: #7a0000;
-      font-size: 1.3rem;
-      letter-spacing: 3px;
-      transition: 0.3s ease;
       text-decoration: none;
+      transition: 0.3s ease;
       position: relative;
     }
 
-    /* HOVER GLITCH */
-    .connect-container a:hover {
+    .cmd-link:hover {
       color: #b30000;
       text-shadow: 0 0 10px #b30000;
-      transform: translateY(-2px);
     }
 
-    .connect-container a:hover::after {
-      content: "INTERFERENCE DETECTED";
+    .cmd-link:hover::after {
+      content: "EXECUTE?";
       position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      top: -22px;
+      left: 0;
+      top: -18px;
       font-size: 0.7rem;
       color: #4d0000;
       opacity: 0.7;
       letter-spacing: 2px;
+    }
+
+    /* TYPEWRITER EFFECT */
+    .typewriter {
+      overflow: hidden;
+      white-space: nowrap;
+      border-right: 2px solid #b30000;
+      animation: typing 3s steps(40, end), blink 0.8s step-end infinite;
+      width: 0;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    @keyframes blink {
+      0%, 100% { border-color: transparent; }
+      50% { border-color: #b30000; }
     }
 
     @keyframes fadeIn {
@@ -183,14 +150,6 @@
 </head>
 
 <body>
-
-  <!-- RECORDING INDICATOR -->
-  <div class="rec-overlay">
-    <span class="rec-dot"></span>REC
-  </div>
-
-  <!-- STATIC LINES -->
-  <div class="static-lines"></div>
 
   <div class="logo">CONNECT</div>
 
@@ -204,13 +163,29 @@
 
   <div class="divider"></div>
 
-  <div class="connect-container">
+  <div class="terminal">
 
-    <div class="status-line">STATUS: CHANNELS UNDER SURVEILLANCE</div>
+    <div class="line typewriter">> establishing secure channel...</div>
+    <div class="line">> connection stable</div>
+    <div class="line">> authorized user detected</div>
+    <div class="line">> awaiting command input</div>
 
-    <a href="https://instagram.com/" target="_blank">INSTAGRAM</a>
-    <a href="https://tiktok.com/" target="_blank">TIKTOK</a>
-    <a href="mailto:your@email.com">EMAIL</a>
+    <br>
+
+    <div class="line">
+      <span class="prompt">mox4real/connect:</span> 
+      <a class="cmd-link" href="https://instagram.com/" target="_blank">open_instagram</a>
+    </div>
+
+    <div class="line">
+      <span class="prompt">mox4real/connect:</span> 
+      <a class="cmd-link" href="https://tiktok.com/" target="_blank">open_tiktok</a>
+    </div>
+
+    <div class="line">
+      <span class="prompt">mox4real/connect:</span> 
+      <a class="cmd-link" href="mailto:your@email.com">send_email</a>
+    </div>
 
   </div>
 
