@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,6 +31,55 @@
       background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
       pointer-events: none;
       z-index: 5;
+    }
+
+    /* AGE GATE OVERLAY */
+    #age-gate {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    #age-gate h1 {
+      font-size: 2.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      color: #b30000;
+      text-transform: uppercase;
+    }
+
+    #age-gate p {
+      font-size: 1.1rem;
+      color: #7a0000;
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .age-btn {
+      background: transparent;
+      border: 1px solid #4d0000;
+      color: #b30000;
+      padding: 12px 28px;
+      margin: 10px;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .age-btn:hover {
+      background: #4d0000;
+      color: #fff;
     }
 
     /* LOGO */
@@ -121,6 +168,20 @@
 
 <body>
 
+  <!-- AGE GATE -->
+  <div id="age-gate">
+    <h1>Content Warning</h1>
+    <p>
+      This site contains horror themes, unsettling visuals, and mature content.  
+      Viewer discretion is advised.  
+      You must be 18+ to enter.
+    </p>
+
+    <button class="age-btn" id="enter-btn">I Am 18+</button>
+    <button class="age-btn" id="leave-btn">Leave</button>
+  </div>
+
+  <!-- MAIN SITE -->
   <div class="logo">Mox4Real</div>
 
   <nav>
@@ -142,6 +203,22 @@
     /* PAGE FADE-IN */
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
+    });
+
+    /* AGE GATE LOGIC */
+    const ageGate = document.getElementById("age-gate");
+    const enterBtn = document.getElementById("enter-btn");
+    const leaveBtn = document.getElementById("leave-btn");
+
+    enterBtn.addEventListener("click", () => {
+      ageGate.style.opacity = "0";
+      setTimeout(() => {
+        ageGate.style.display = "none";
+      }, 800);
+    });
+
+    leaveBtn.addEventListener("click", () => {
+      window.location.href = "https://google.com";
     });
 
     /* PAGE FADE-OUT ON LINK CLICK */
