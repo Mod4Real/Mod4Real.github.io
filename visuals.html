@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visuals | Mox4Real</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #b30000;
+      font-family: "Cinzel", "Times New Roman", serif;
+      overflow-x: hidden;
+      letter-spacing: 0.5px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    .logo {
+      text-align: center;
+      margin-top: 120px;
+      font-size: 3.8rem;
+      color: #b30000;
+      text-transform: uppercase;
+      letter-spacing: 12px;
+      animation: fadeIn 3s ease-out;
+    }
+
+    nav {
+      margin-top: 80px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      animation: fadeIn 4s ease-out;
+    }
+
+    nav a {
+      color: #660000;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      transition: color 0.6s ease, text-shadow 0.6s ease;
+    }
+
+    nav a:hover {
+      color: #b30000;
+      text-shadow: 0 0 12px #b30000;
+    }
+
+    .divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4d0000, transparent);
+      margin: 80px auto;
+      animation: fadeIn 5s ease-out;
+    }
+
+    .page-title {
+      text-align: center;
+      font-size: 2rem;
+      color: #7a0000;
+      letter-spacing: 4px;
+      animation: fadeIn 6s ease-out;
+      margin-bottom: 40px;
+    }
+
+    .placeholder {
+      text-align: center;
+      color: #660000;
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      animation: fadeIn 7s ease-out;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="logo">Mox4Real</div>
+
+  <nav>
+    <a href="index.html">FEED</a>
+    <a href="case-files.html">CASE FILES</a>
+    <a href="visuals.html">VISUALS</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="connect.html">CONNECT</a>
+  </nav>
+
+  <div class="divider"></div>
+
+  <div class="page-title">Visuals</div>
+
+  <div class="placeholder">Images. Frames. Evidence. Coming soon.</div>
+
+</body>
+</html>
