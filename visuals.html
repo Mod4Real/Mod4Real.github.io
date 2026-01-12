@@ -94,6 +94,7 @@
       box-shadow: 0 0 10px #b30000;
     }
 
+    /* VISUALS */
     .visuals-container {
       width: 70%;
       margin: 0 auto 100px;
@@ -104,6 +105,9 @@
       margin-bottom: 60px;
       padding-bottom: 40px;
       border-bottom: 1px solid #330000;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s ease;
     }
 
     .visual h2 {
@@ -113,14 +117,45 @@
       margin-bottom: 10px;
     }
 
-    .visual p {
+    /* Toggle icon */
+    .visual::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.4rem;
+      color: #4d0000;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .visual.open::after {
+      content: "–";
+      color: #b30000;
+      transform: rotate(180deg);
+    }
+
+    /* Hidden content */
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.4s ease;
+      margin-top: 10px;
+    }
+
+    .visual.open .details {
+      max-height: 1000px;
+      opacity: 1;
+    }
+
+    .details p {
       color: #7a0000;
       font-size: 1rem;
       line-height: 1.6;
       margin-bottom: 20px;
     }
 
-    .visual img {
+    .details img {
       width: 100%;
       max-width: 700px;
       display: block;
@@ -131,7 +166,7 @@
       filter: brightness(80%);
     }
 
-    .visual img:hover {
+    .details img:hover {
       filter: brightness(100%);
       box-shadow: 0 0 20px #b30000;
     }
@@ -166,31 +201,37 @@
 
     <div class="visual">
       <h2>EVIDENCE‑A01: “Stairwell Capture”</h2>
-      <p>
-        Description: A dim stairwell lit by a single flickering bulb.
-        A shadow appears on the landing despite no visible source.
-        Investigators report feeling watched while reviewing the file.
-      </p>
-      <img src="YOUR-IMAGE-URL-HERE" alt="Stairwell Capture">
+      <div class="details">
+        <p>
+          Description: A dim stairwell lit by a single flickering bulb.
+          A shadow appears on the landing despite no visible source.
+          Investigators report feeling watched while reviewing the file.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Stairwell Capture">
+      </div>
     </div>
 
     <div class="visual">
       <h2>EVIDENCE‑B14: “Unmarked Doorway”</h2>
-      <p>
-        Description: A door with no frame, hinges, or handle.
-        The wall texture bends unnaturally around it.
-        Audio notes mention scratching from the other side.
-      </p>
-      <img src="YOUR-IMAGE-URL-HERE" alt="Unmarked Doorway">
+      <div class="details">
+        <p>
+          Description: A door with no frame, hinges, or handle.
+          The wall texture bends unnaturally around it.
+          Audio notes mention scratching from the other side.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Unmarked Doorway">
+      </div>
     </div>
 
     <div class="visual">
       <h2>EVIDENCE‑C09: “Figure in Reflection”</h2>
-      <p>
-        Description: A bathroom mirror fogged over except for a handprint.
-        A silhouette stands behind the photographer, but no one else was present.
-      </p>
-      <img src="YOUR-IMAGE-URL-HERE" alt="Figure in Reflection">
+      <div class="details">
+        <p>
+          Description: A bathroom mirror fogged over except for a handprint.
+          A silhouette stands behind the photographer, but no one else was present.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Figure in Reflection">
+      </div>
     </div>
 
   </div>
@@ -213,6 +254,14 @@
       });
     });
 
+    /* EXPANDABLE VISUALS */
+    document.querySelectorAll(".visual").forEach(visual => {
+      visual.addEventListener("click", () => {
+        visual.classList.toggle("open");
+      });
+    });
+
+    /* PAGE FADE-OUT ON LINK CLICK */
     document.querySelectorAll("nav a").forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
