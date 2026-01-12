@@ -207,7 +207,6 @@
   <div class="counter-panel">
     <div class="counter-line">ACTIVE FILES: <span id="activeFiles">12948</span></div>
     <div class="counter-line">MISSING FILES: <span id="missingFiles">7</span></div>
-    <div class="counter-line">UNAUTHORIZED ACCESS ATTEMPTS: <span id="unauthAttempts">0</span></div>
   </div>
 
   <!-- SEARCH BAR -->
@@ -352,18 +351,14 @@
     /* LIVE COUNTER LOGIC */
     let activeFiles = 12948;
     let missingFiles = 7;
-    let unauthorized = 0;
 
     function updateCounters() {
       activeFiles += Math.floor(Math.random() * 3); // slow increase
       missingFiles -= Math.random() < 0.02 ? 1 : 0; // rare decrease
       if (missingFiles < 0) missingFiles = 0;
 
-      if (Math.random() < 0.05) unauthorized++; // occasional spike
-
       document.getElementById("activeFiles").textContent = activeFiles.toLocaleString();
       document.getElementById("missingFiles").textContent = missingFiles;
-      document.getElementById("unauthAttempts").textContent = unauthorized;
     }
 
     setInterval(updateCounters, 2000);
