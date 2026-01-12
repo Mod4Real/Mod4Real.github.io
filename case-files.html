@@ -76,6 +76,25 @@
       animation: fadeIn 5s ease-out;
     }
 
+    /* COUNTER PANEL */
+    .counter-panel {
+      width: 70%;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border: 1px solid #330000;
+      background: #0a0a0a;
+      animation: fadeIn 5.5s ease-out;
+    }
+
+    .counter-line {
+      font-family: "Courier New", monospace;
+      color: #b30000;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin: 8px 0;
+      text-shadow: 0 0 8px #4d0000;
+    }
+
     /* SEARCH BAR */
     .search-box {
       width: 70%;
@@ -184,12 +203,22 @@
 
   <div class="divider"></div>
 
+  <!-- LIVE COUNTER PANEL -->
+  <div class="counter-panel">
+    <div class="counter-line">ACTIVE FILES: <span id="activeFiles">12948</span></div>
+    <div class="counter-line">MISSING FILES: <span id="missingFiles">7</span></div>
+    <div class="counter-line">UNAUTHORIZED ACCESS ATTEMPTS: <span id="unauthAttempts">0</span></div>
+  </div>
+
   <!-- SEARCH BAR -->
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search case files...">
   </div>
 
   <div class="case-container" id="caseContainer">
+
+    <!-- CASES (unchanged) -->
+    <!-- ... your case entries remain exactly the same ... -->
 
     <!-- CASE 001 -->
     <div class="case">
@@ -319,6 +348,25 @@
         caseFile.classList.toggle("open");
       });
     });
+
+    /* LIVE COUNTER LOGIC */
+    let activeFiles = 12948;
+    let missingFiles = 7;
+    let unauthorized = 0;
+
+    function updateCounters() {
+      activeFiles += Math.floor(Math.random() * 3); // slow increase
+      missingFiles -= Math.random() < 0.02 ? 1 : 0; // rare decrease
+      if (missingFiles < 0) missingFiles = 0;
+
+      if (Math.random() < 0.05) unauthorized++; // occasional spike
+
+      document.getElementById("activeFiles").textContent = activeFiles.toLocaleString();
+      document.getElementById("missingFiles").textContent = missingFiles;
+      document.getElementById("unauthAttempts").textContent = unauthorized;
+    }
+
+    setInterval(updateCounters, 2000);
 
     /* PAGE FADE-OUT ON LINK CLICK */
     document.querySelectorAll("nav a").forEach(link => {
