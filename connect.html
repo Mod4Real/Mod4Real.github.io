@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Connect — Mox4Real</title>
+  <title>Mox4Real — Connect</title>
 
   <style>
     /* GLOBAL */
@@ -19,7 +19,9 @@
       transition: opacity 0.8s ease;
     }
 
-    body.loaded { opacity: 1; }
+    body.loaded {
+      opacity: 1;
+    }
 
     /* CINEMATIC VIGNETTE */
     body::before {
@@ -29,6 +31,55 @@
       background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
       pointer-events: none;
       z-index: 5;
+    }
+
+    /* AGE GATE */
+    #age-gate {
+      position: fixed;
+      inset: 0;
+      background: #000;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 20px;
+      z-index: 9999;
+      opacity: 1;
+      transition: opacity 0.8s ease;
+    }
+
+    #age-gate h1 {
+      font-size: 2.4rem;
+      letter-spacing: 6px;
+      margin-bottom: 20px;
+      color: #b30000;
+      text-transform: uppercase;
+    }
+
+    #age-gate p {
+      font-size: 1.1rem;
+      color: #7a0000;
+      max-width: 600px;
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+
+    .age-btn {
+      background: transparent;
+      border: 1px solid #4d0000;
+      color: #b30000;
+      padding: 12px 28px;
+      margin: 10px;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .age-btn:hover {
+      background: #4d0000;
+      color: #fff;
     }
 
     /* LOGO */
@@ -48,7 +99,7 @@
       100% { text-shadow: 0 0 10px #4d0000; }
     }
 
-    /* NAVIGATION */
+    /* NAV */
     nav {
       margin-top: 80px;
       display: flex;
@@ -80,76 +131,43 @@
       animation: fadeIn 5s ease-out;
     }
 
-    /* TERMINAL */
-    .terminal {
-      width: 70%;
-      margin: 0 auto 120px;
-      font-family: "Courier New", monospace;
-      color: #b30000;
+    /* CONNECT PAGE CONTENT */
+    .connect-wrapper {
+      text-align: center;
+      animation: fadeIn 6s ease-out;
+      padding-bottom: 100px;
+    }
+
+    .connect-title {
+      font-size: 1.8rem;
+      color: #660000;
+      letter-spacing: 4px;
+      margin-bottom: 20px;
+    }
+
+    .connect-desc {
       font-size: 1.1rem;
-    }
-
-    .terminal-line {
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 2px solid #b30000;
-      width: 0;
-      opacity: 0;
-      margin: 18px 0;
-      letter-spacing: 2px;
-    }
-
-    /* BLINKING CURSOR */
-    .cursor {
-      display: inline-block;
-      width: 10px;
-      height: 18px;
-      background: #b30000;
-      margin-left: 5px;
-      animation: blink 0.8s infinite;
-    }
-
-    @keyframes blink {
-      0%, 100% { opacity: 0; }
-      50% { opacity: 1; }
-    }
-
-    /* INPUT FIELD */
-    #cmdInput {
-      width: 80%;
-      background: transparent;
-      border: none;
-      border-bottom: 1px solid #4d0000;
-      color: #b30000;
-      font-size: 1.1rem;
-      padding: 8px;
-      outline: none;
-      letter-spacing: 2px;
-      margin-top: 10px;
-    }
-
-    #cmdInput::placeholder {
-      color: #330000;
-    }
-
-    #feedback {
-      margin-top: 10px;
       color: #7a0000;
+      max-width: 600px;
+      margin: 0 auto 40px;
+      line-height: 1.6;
+    }
+
+    .social-links a {
+      display: block;
+      color: #b30000;
+      text-decoration: none;
+      font-size: 1.2rem;
+      margin: 12px 0;
       letter-spacing: 2px;
-      opacity: 0;
+      transition: 0.3s ease;
     }
 
-    /* GLITCH FLASH */
-    @keyframes glitchFlash {
-      0% { background: #000; }
-      20% { background: #300; }
-      40% { background: #000; }
-      60% { background: #600; }
-      80% { background: #000; }
-      100% { background: #000; }
+    .social-links a:hover {
+      color: #ff0000;
+      text-shadow: 0 0 10px #b30000;
     }
 
-    /* FADE IN */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -159,7 +177,16 @@
 
 <body>
 
-  <div class="logo">CONNECT</div>
+  <!-- AGE GATE -->
+  <div id="age-gate">
+    <h1>Content Warning</h1>
+    <p>This site contains horror themes, unsettling visuals, and mature content. Viewer discretion is advised. You must be 18+ to enter.</p>
+    <button class="age-btn" id="enter-btn">I Am 18+</button>
+    <button class="age-btn" id="leave-btn">Leave</button>
+  </div>
+
+  <!-- MAIN -->
+  <div class="logo">Mox4Real</div>
 
   <nav>
     <a href="index.html">FEED</a>
@@ -171,128 +198,51 @@
 
   <div class="divider"></div>
 
-  <div class="terminal" id="terminal"></div>
+  <div class="connect-wrapper">
+    <div class="connect-title">Connect With Me</div>
+    <div class="connect-desc">
+      The archive speaks in many voices.  
+      If you want to reach the curator, follow the trails below.
+    </div>
+
+    <div class="social-links">
+      <a href="#">Instagram</a>
+      <a href="#">TikTok</a>
+      <a href="#">YouTube</a>
+      <a href="#">Email</a>
+    </div>
+  </div>
 
   <script>
-    /* PAGE FADE-IN */
     window.addEventListener("load", () => {
       document.body.classList.add("loaded");
-      startTerminal();
     });
 
-    /* PAGE FADE-OUT ON NAV CLICK */
+    const ageGate = document.getElementById("age-gate");
+    const enterBtn = document.getElementById("enter-btn");
+    const leaveBtn = document.getElementById("leave-btn");
+
+    enterBtn.addEventListener("click", () => {
+      ageGate.style.opacity = "0";
+      setTimeout(() => {
+        ageGate.style.display = "none";
+      }, 800);
+    });
+
+    leaveBtn.addEventListener("click", () => {
+      window.location.href = "https://google.com";
+    });
+
     document.querySelectorAll("nav a").forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
         const url = link.getAttribute("href");
         document.body.style.opacity = "0";
-        setTimeout(() => { window.location.href = url; }, 800);
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
       });
     });
-
-    /* TERMINAL TEXT REVEAL */
-    const terminalLines = [
-      "> establishing secure channel...",
-      "> connection stable",
-      "> authorized user detected",
-      "> awaiting command input"
-    ];
-
-    function typeLine(text, callback) {
-      const terminal = document.getElementById("terminal");
-      const line = document.createElement("div");
-      line.classList.add("terminal-line");
-      terminal.appendChild(line);
-
-      let i = 0;
-      line.style.opacity = 1;
-
-      const interval = setInterval(() => {
-        line.textContent = text.slice(0, i);
-        i++;
-
-        if (i > text.length) {
-          clearInterval(interval);
-          line.style.borderRight = "none";
-          callback();
-        }
-      }, 40);
-    }
-
-    function startTerminal() {
-      let index = 0;
-
-      function next() {
-        if (index < terminalLines.length) {
-          typeLine(terminalLines[index], () => {
-            index++;
-            next();
-          });
-        } else {
-          loadCommands();
-        }
-      }
-
-      next();
-    }
-
-    /* LOAD COMMANDS + PASSWORD INPUT */
-    function loadCommands() {
-      const terminal = document.getElementById("terminal");
-
-      const commands = [
-        "mox4real/connect: open_instagram",
-        "mox4real/connect: open_tiktok",
-        "mox4real/connect: send_email",
-        "",
-        "> manual override enabled",
-        "> enter password to unlock hidden node",
-        "",
-        "mox4real/password: "
-      ];
-
-      commands.forEach((cmd, i) => {
-        const line = document.createElement("div");
-        line.classList.add("terminal-line");
-        line.style.animation = "none";
-        line.style.opacity = 1;
-        line.style.width = "auto";
-        line.textContent = cmd;
-        terminal.appendChild(line);
-
-        if (cmd === "mox4real/password: ") {
-          const input = document.createElement("input");
-          input.id = "cmdInput";
-          input.placeholder = "enter command...";
-          line.appendChild(input);
-
-          const feedback = document.createElement("div");
-          feedback.id = "feedback";
-          terminal.appendChild(feedback);
-
-          input.addEventListener("keydown", (e) => {
-            if (e.key === "Enter") {
-              const value = input.value.trim().toLowerCase();
-
-              if (value === "moxx") {
-                feedback.textContent = "> access granted. redirecting...";
-                feedback.style.opacity = 1;
-                document.body.style.animation = "glitchFlash 0.6s";
-
-                setTimeout(() => {
-                  window.location.href = "secret.html";
-                }, 1200);
-              } else {
-                feedback.textContent = "> invalid command";
-                feedback.style.opacity = 1;
-              }
-
-              input.value = "";
-            }
-          });
-        }
-      });
-    }
   </script>
 
 </body>
