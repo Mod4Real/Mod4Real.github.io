@@ -158,10 +158,57 @@
       animation: fadeIn 8s ease-out;
     }
 
-    /* ANIMATIONS */
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* SECRET TERMINAL */
+    #terminal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 9998;
+    }
+
+    #terminal-window {
+      width: 600px;
+      max-width: 90%;
+      background: #000;
+      border: 1px solid #4d0000;
+      padding: 30px;
+      font-family: "Courier New", monospace;
+      color: #b30000;
+      text-shadow: 0 0 8px #4d0000;
+      animation: fadeIn 0.5s ease-out;
+    }
+
+    .terminal-line {
+      margin-bottom: 15px;
+      letter-spacing: 2px;
+    }
+
+    #terminal-input {
+      width: 100%;
+      background: #000;
+      border: none;
+      border-bottom: 1px solid #4d0000;
+      color: #b30000;
+      padding: 8px;
+      font-size: 1.1rem;
+      outline: none;
+      letter-spacing: 2px;
+    }
+
+    #terminal-error {
+      margin-top: 15px;
+      color: #7a0000;
+      font-size: 0.9rem;
+      height: 20px;
+      letter-spacing: 2px;
     }
   </style>
 </head>
@@ -172,8 +219,8 @@
   <div id="age-gate">
     <h1>Content Warning</h1>
     <p>
-      This site contains horror themes, unsettling visuals, and mature content.  
-      Viewer discretion is advised.  
+      This site contains horror themes, unsettling visuals, and mature content.
+      Viewer discretion is advised.
       You must be 18+ to enter.
     </p>
 
@@ -198,6 +245,16 @@
   <div class="subtagline">Welcome to the archive.</div>
 
   <div class="mainline">The archive grows because something wants to be remembered..</div>
+
+  <!-- SECRET TERMINAL -->
+  <div id="terminal-overlay">
+    <div id="terminal-window">
+      <div class="terminal-line">ACCESS POINT // MOX4REAL ARCHIVE</div>
+      <div class="terminal-line">ENTER PASSWORD:</div>
+      <input type="password" id="terminal-input" autofocus>
+      <div id="terminal-error"></div>
+    </div>
+  </div>
 
   <script>
     /* PAGE FADE-IN */
@@ -231,6 +288,45 @@
           window.location.href = url;
         }, 800);
       });
+    });
+
+    /* SECRET TERMINAL LOGIC */
+    const terminalOverlay = document.getElementById("terminal-overlay");
+    const terminalInput = document.getElementById("terminal-input");
+    const terminalError = document.getElementById("terminal-error");
+
+    // Open terminal with "~"
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "`" || e.key === "~") {
+        terminalOverlay.style.display = "flex";
+        setTimeout(() => terminalInput.focus(), 50);
+      }
+    });
+
+    // Password check
+    terminalInput.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        const value = terminalInput.value.trim().toLowerCase();
+
+        if (value === "moxxx") {
+          document.body.style.opacity = "0";
+          setTimeout(() => {
+            window.location.href = "secret.html";
+          }, 800);
+        } else {
+          terminalError.textContent = "ACCESS DENIED // INCORRECT PASSWORD";
+          terminalInput.value = "";
+        }
+      }
+    });
+
+    // Close terminal with ESC
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        terminalOverlay.style.display = "none";
+        terminalInput.value = "";
+        terminalError.textContent = "";
+      }
     });
   </script>
 
