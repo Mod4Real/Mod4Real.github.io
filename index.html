@@ -33,6 +33,29 @@
       z-index: 5;
     }
 
+    /* TOP-RIGHT ADMIN BUTTON */
+    .admin-button {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 999;
+      color: #660000;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-decoration: none;
+      padding: 6px 14px;
+      border: 1px solid #330000;
+      background: rgba(0,0,0,0.6);
+      transition: 0.3s ease;
+    }
+
+    .admin-button:hover {
+      color: #ff0000;
+      border-color: #b30000;
+      text-shadow: 0 0 10px #b30000;
+      background: rgba(20,0,0,0.8);
+    }
+
     /* AGE GATE */
     #age-gate {
       position: fixed;
@@ -122,19 +145,6 @@
       transform: translateY(-3px);
     }
 
-    /* ADMIN LINK STYLE — FIXED */
-    .admin-link {
-      color: #7a0000;       /* brighter red */
-      opacity: 1;           /* fully visible */
-      text-shadow: 0 0 6px #300000;
-      font-weight: bold;
-    }
-
-    .admin-link:hover {
-      color: #ff0000;
-      text-shadow: 0 0 12px #b30000;
-    }
-
     /* DIVIDER */
     .divider {
       width: 60%;
@@ -175,6 +185,9 @@
 
 <body>
 
+  <!-- ADMIN BUTTON (TOP RIGHT) -->
+  <a href="login.html" class="admin-button">ADMIN</a>
+
   <!-- AGE GATE -->
   <div id="age-gate">
     <h1>Content Warning</h1>
@@ -197,7 +210,6 @@
     <a href="visuals.html">VISUALS</a>
     <a href="projects.html">PROJECTS</a>
     <a href="connect.html">CONNECT</a>
-    <a href="login.html" class="admin-link">ADMIN</a>
   </nav>
 
   <div class="divider"></div>
