@@ -195,6 +195,15 @@
       transition: width 2.5s ease;
     }
 
+    .complete-message {
+      display: none;
+      margin-top: 30px;
+      color: #7a0000;
+      font-size: 1rem;
+      letter-spacing: 3px;
+      animation: fadeIn 1.5s ease-out;
+    }
+
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -240,6 +249,10 @@
       <div class="loading-bar">
         <div class="loading-fill" id="loadingFill"></div>
       </div>
+
+      <div class="complete-message" id="completeMessage">
+        Entry received. The curator will review your submission.
+      </div>
     </div>
 
   </div>
@@ -266,6 +279,7 @@
     const form = document.getElementById("contactForm");
     const loadingScreen = document.getElementById("loadingScreen");
     const loadingFill = document.getElementById("loadingFill");
+    const completeMessage = document.getElementById("completeMessage");
 
     form.addEventListener("submit", e => {
       e.preventDefault();
@@ -276,6 +290,10 @@
       setTimeout(() => {
         loadingFill.style.width = "100%";
       }, 200);
+
+      setTimeout(() => {
+        completeMessage.style.display = "block";
+      }, 3000);
     });
   </script>
 
