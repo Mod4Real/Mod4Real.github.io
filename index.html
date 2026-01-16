@@ -33,27 +33,29 @@
       z-index: 5;
     }
 
-    /* TOP-RIGHT ADMIN BUTTON */
-    .admin-button {
+    /* ADMIN LOGIN BUTTON (TOP RIGHT) */
+    .admin-login-box {
       position: fixed;
       top: 20px;
       right: 25px;
       z-index: 999;
-      color: #660000;
+      padding: 10px 18px;
+      border: 1px solid #4d0000;
+      background: rgba(0, 0, 0, 0.7);
+      color: #b30000;
       font-size: 0.9rem;
       letter-spacing: 3px;
-      text-decoration: none;
-      padding: 6px 14px;
-      border: 1px solid #330000;
-      background: rgba(0,0,0,0.6);
+      text-transform: uppercase;
+      cursor: pointer;
       transition: 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 0 12px #1a0000;
     }
 
-    .admin-button:hover {
-      color: #ff0000;
-      border-color: #b30000;
-      text-shadow: 0 0 10px #b30000;
-      background: rgba(20,0,0,0.8);
+    .admin-login-box:hover {
+      background: #4d0000;
+      color: #fff;
+      box-shadow: 0 0 18px #b30000;
     }
 
     /* AGE GATE */
@@ -185,8 +187,8 @@
 
 <body>
 
-  <!-- ADMIN BUTTON (TOP RIGHT) -->
-  <a href="login.html" class="admin-button">ADMIN</a>
+  <!-- ADMIN LOGIN BUTTON -->
+  <a href="login.html" class="admin-login-box">ADMIN LOGIN</a>
 
   <!-- AGE GATE -->
   <div id="age-gate">
