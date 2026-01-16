@@ -104,19 +104,62 @@
       line-height: 1.6;
     }
 
-    .social-links a {
-      display: block;
-      color: #b30000;
-      text-decoration: none;
-      font-size: 1.2rem;
-      margin: 12px 0;
+    /* CONTACT FORM */
+    .contact-form {
+      width: 60%;
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      animation: fadeIn 7s ease-out;
+    }
+
+    .contact-form label {
+      color: #660000;
+      font-size: 0.9rem;
       letter-spacing: 2px;
+      text-align: left;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      background: #0d0d0d;
+      border: 1px solid #330000;
+      padding: 12px;
+      color: #b30000;
+      font-family: "Cinzel", serif;
+      letter-spacing: 1px;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #b30000;
+      box-shadow: 0 0 10px #4d0000;
+    }
+
+    .contact-form textarea {
+      height: 140px;
+      resize: none;
+    }
+
+    .contact-form button {
+      background: #330000;
+      border: 1px solid #660000;
+      padding: 12px;
+      color: #b30000;
+      font-family: "Cinzel", serif;
+      letter-spacing: 3px;
+      cursor: pointer;
       transition: 0.3s ease;
     }
 
-    .social-links a:hover {
-      color: #ff0000;
-      text-shadow: 0 0 10px #b30000;
+    .contact-form button:hover {
+      background: #660000;
+      color: #000;
+      box-shadow: 0 0 15px #b30000;
     }
 
     @keyframes fadeIn {
@@ -144,16 +187,19 @@
   <div class="connect-wrapper">
     <div class="connect-title">Connect With Me</div>
     <div class="connect-desc">
-      The archive speaks in many voices.  
-      If you want to reach the curator, follow the trails below.
+      The archive listens when it chooses to.<br>
+      If you wish to leave a message for the curator, submit your entry below.
     </div>
 
-    <div class="social-links">
-      <a href="#">Instagram</a>
-      <a href="#">TikTok</a>
-      <a href="#">YouTube</a>
-      <a href="#">Email</a>
-    </div>
+    <form class="contact-form">
+      <label>Your Name</label>
+      <input type="text" placeholder="Identify yourself…" required>
+
+      <label>Your Message</label>
+      <textarea placeholder="What brings you to the archive…" required></textarea>
+
+      <button type="submit">Submit Entry</button>
+    </form>
   </div>
 
   <script>
