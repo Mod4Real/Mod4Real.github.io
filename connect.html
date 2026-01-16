@@ -162,6 +162,39 @@
       box-shadow: 0 0 15px #b30000;
     }
 
+    /* LOADING BAR */
+    .loading-screen {
+      display: none;
+      margin-top: 40px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .loading-text {
+      color: #660000;
+      letter-spacing: 3px;
+      margin-bottom: 20px;
+      font-size: 1rem;
+    }
+
+    .loading-bar {
+      width: 60%;
+      max-width: 500px;
+      height: 12px;
+      background: #1a0000;
+      margin: 0 auto;
+      border: 1px solid #330000;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .loading-fill {
+      height: 100%;
+      width: 0%;
+      background: #b30000;
+      box-shadow: 0 0 10px #b30000;
+      transition: width 2.5s ease;
+    }
+
     @keyframes fadeIn {
       0% { opacity: 0; transform: translateY(20px); }
       100% { opacity: 1; transform: translateY(0); }
@@ -191,7 +224,7 @@
       If you wish to leave a message for the curator, submit your entry below.
     </div>
 
-    <form class="contact-form">
+    <form class="contact-form" id="contactForm">
       <label>Your Name</label>
       <input type="text" placeholder="Identify yourself…" required>
 
@@ -200,6 +233,15 @@
 
       <button type="submit">Submit Entry</button>
     </form>
+
+    <!-- FAKE LOADING BAR -->
+    <div class="loading-screen" id="loadingScreen">
+      <div class="loading-text">Processing your entry…</div>
+      <div class="loading-bar">
+        <div class="loading-fill" id="loadingFill"></div>
+      </div>
+    </div>
+
   </div>
 
   <script>
@@ -218,6 +260,22 @@
           window.location.href = url;
         }, 800);
       });
+    });
+
+    /* FAKE LOADING BAR LOGIC */
+    const form = document.getElementById("contactForm");
+    const loadingScreen = document.getElementById("loadingScreen");
+    const loadingFill = document.getElementById("loadingFill");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      form.style.display = "none";
+      loadingScreen.style.display = "block";
+
+      setTimeout(() => {
+        loadingFill.style.width = "100%";
+      }, 200);
     });
   </script>
 
