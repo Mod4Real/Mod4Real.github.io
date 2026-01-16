@@ -246,6 +246,254 @@
 
     <!-- CASE FILES INSERTED BELOW -->
 
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Case Files — Mox4Real</title>
+
+  <style>
+    /* GLOBAL */
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #b30000;
+      font-family: "Cinzel", "Times New Roman", serif;
+      overflow-x: hidden;
+      letter-spacing: 0.5px;
+      opacity: 0;
+      transition: opacity 0.8s ease;
+    }
+
+    body.loaded {
+      opacity: 1;
+    }
+
+    /* CINEMATIC VIGNETTE */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
+      pointer-events: none;
+      z-index: 5;
+    }
+
+    /* ADMIN LOGIN BUTTON (TOP RIGHT) */
+    .admin-login-box {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 999;
+      padding: 10px 18px;
+      border: 1px solid #4d0000;
+      background: rgba(0, 0, 0, 0.7);
+      color: #b30000;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 0 12px #1a0000;
+    }
+
+    .admin-login-box:hover {
+      background: #4d0000;
+      color: #fff;
+      box-shadow: 0 0 18px #b30000;
+    }
+
+    /* HEADER */
+    .logo {
+      text-align: center;
+      margin-top: 120px;
+      font-size: 3.2rem;
+      color: #b30000;
+      text-transform: uppercase;
+      letter-spacing: 10px;
+      animation: fadeIn 3s ease-out;
+    }
+
+    /* NAVIGATION */
+    nav {
+      margin-top: 60px;
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      animation: fadeIn 4s ease-out;
+    }
+
+    nav a {
+      color: #660000;
+      text-decoration: none;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      transition: 0.4s ease;
+    }
+
+    nav a:hover {
+      color: #b30000;
+      text-shadow: 0 0 12px #b30000;
+      transform: translateY(-3px);
+    }
+
+    /* DIVIDER */
+    .divider {
+      width: 60%;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #4d0000, transparent);
+      margin: 60px auto;
+      animation: fadeIn 5s ease-out;
+    }
+
+    /* COUNTER PANEL */
+    .counter-panel {
+      width: 70%;
+      margin: 0 auto 40px;
+      padding: 20px;
+      border: 1px solid #330000;
+      background: #0a0a0a;
+      animation: fadeIn 5.5s ease-out;
+    }
+
+    .counter-line {
+      font-family: "Courier New", monospace;
+      color: #b30000;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      margin: 8px 0;
+      text-shadow: 0 0 8px #4d0000;
+    }
+
+    /* SEARCH BAR */
+    .search-box {
+      width: 70%;
+      margin: 0 auto 40px;
+      text-align: center;
+      animation: fadeIn 5.5s ease-out;
+    }
+
+    .search-box input {
+      width: 80%;
+      padding: 12px;
+      background: #0a0a0a;
+      border: 1px solid #4d0000;
+      color: #b30000;
+      font-size: 1rem;
+      letter-spacing: 2px;
+      outline: none;
+      transition: 0.3s ease;
+    }
+
+    .search-box input:focus {
+      border-color: #b30000;
+      box-shadow: 0 0 10px #b30000;
+    }
+
+    /* CASE FILES */
+    .case-container {
+      width: 70%;
+      margin: 0 auto 100px;
+      animation: fadeIn 6s ease-out;
+    }
+
+    .case {
+      margin-bottom: 60px;
+      padding-bottom: 30px;
+      border-bottom: 1px solid #330000;
+      cursor: pointer;
+      position: relative;
+      transition: 0.3s ease;
+    }
+
+    .case h2 {
+      font-size: 1.6rem;
+      color: #b30000;
+      margin-bottom: 10px;
+      letter-spacing: 3px;
+    }
+
+    .case p {
+      color: #7a0000;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin: 6px 0;
+    }
+
+    /* Expandable toggle icon */
+    .case::after {
+      content: "+";
+      position: absolute;
+      right: 0;
+      top: 0;
+      font-size: 1.4rem;
+      color: #4d0000;
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .case.open::after {
+      content: "–";
+      color: #b30000;
+      transform: rotate(180deg);
+    }
+
+    /* Hidden details */
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transition: max-height 0.6s ease, opacity 0.4s ease;
+      margin-top: 10px;
+    }
+
+    .case.open .details {
+      max-height: 500px;
+      opacity: 1;
+    }
+
+    /* ANIMATIONS */
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ADMIN LOGIN BUTTON -->
+  <a href="login.html" class="admin-login-box">ADMIN LOGIN</a>
+
+  <div class="logo">CASE FILES</div>
+
+  <nav>
+    <a href="index.html">FEED</a>
+    <a href="case-files.html">CASE FILES</a>
+    <a href="visuals.html">VISUALS</a>
+    <a href="projects.html">PROJECTS</a>
+    <a href="connect.html">CONNECT</a>
+  </nav>
+
+  <div class="divider"></div>
+
+  <!-- LIVE COUNTER PANEL -->
+  <div class="counter-panel">
+    <div class="counter-line">ACTIVE FILES: <span id="activeFiles">312</span></div>
+    <div class="counter-line">MISSING FILES: <span id="missingFiles">3</span></div>
+  </div>
+
+  <!-- SEARCH BAR -->
+  <div class="search-box">
+    <input type="text" id="searchInput" placeholder="Search case files...">
+  </div>
+
+  <div class="case-container" id="caseContainer">
+
+    <!-- CASE FILES INSERTED BELOW -->
+
     <div class="case">
       <h2>CASE 001 — The Hinterkaifeck Echoes</h2>
       <p>Six victims. One farmstead. No footprints leaving the scene.</p>
@@ -257,6 +505,125 @@
         The killer vanished without leaving a single track.</p>
       </div>
     </div>
+
+    <div class="case">
+      <h2>CASE 002 — The Black Dahlia Reconstruction</h2>
+      <p>A body posed like a message. A smile carved where no smile belonged.</p>
+      <div class="details">
+        <p>Inspired by the 1947 murder of Elizabeth Short.</p>
+        <p>The Archive records surgical precision, drained blood, and deliberate staging.</p>
+        <p>The killer mailed taunts to newspapers.  
+        The Archive believes they wanted an audience.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <h2>CASE 003 — Zodiac Residue</h2>
+      <p>Symbols. Ciphers. A hunter who preferred puzzles over victims.</p>
+      <div class="details">
+        <p>Inspired by the Zodiac Killer.</p>
+        <p>The Archive stores fragments of coded messages promising further violence.</p>
+        <p>Some ciphers remain unsolved.  
+        The Archive solved one more — but refuses to release it.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <h2>CASE 004 — The Villisca House Revisit</h2>
+      <p>Eight victims. All asleep. All struck with the blunt side of an axe.</p>
+      <div class="details">
+        <p>Inspired by the 1912 Villisca Axe Murders.</p>
+        <p>Mirrors covered. Windows draped.  
+        The killer stayed in the home afterward.</p>
+        <p>The Archive will not enter the house.  
+        It claims something else still lives there.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <h2>CASE 005 — The Hinterland Strangler</h2>
+      <p>A series of disappearances along a rural highway. Only one body ever found.</p>
+      <div class="details">
+        <p>Inspired by the Highway of Tears cases.</p>
+        <p>Victims vanished across decades with no consistent pattern.</p>
+        <p>The Archive believes the killer traveled with the victims — not after them.</p>
+      </div>
+    </div>
+
+    <div class="case">
+      <h2>CASE 006 — The Night Stalker Fragment</h2>
+      <p>A predator who entered homes like he was expected.</p>
+      <div class="details">
+        <p>Inspired by the Night Stalker case.</p>
+        <p>Forced entry, ritualistic posing, and symbols left behind.</p>
+        <p>The Archive still receives similar reports.  
+        It does not believe they are copycats.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    /* PAGE FADE-IN */
+    window.addEventListener("load", () => {
+      document.body.classList.add("loaded");
+    });
+
+    /* SEARCH FUNCTION */
+    const searchInput = document.getElementById("searchInput");
+    const cases = document.querySelectorAll(".case");
+
+    searchInput.addEventListener("input", () => {
+      const query = searchInput.value.toLowerCase();
+
+      cases.forEach(caseFile => {
+        const text = caseFile.innerText.toLowerCase();
+        caseFile.style.display = text.includes(query) ? "block" : "none";
+      });
+    });
+
+    /* EXPANDABLE CASE LOGIC */
+    document.querySelectorAll(".case").forEach(caseFile => {
+      caseFile.addEventListener("click", () => {
+        caseFile.classList.toggle("open");
+      });
+    });
+
+    /* LIVE COUNTER LOGIC */
+    let activeFiles = 312;
+    let missingFiles = 3;
+
+    function updateCounters() {
+      if (Math.random() < 0.4) {
+        activeFiles += 1;
+      }
+
+      if (Math.random() < 0.005) {
+        missingFiles -= 1;
+        if (missingFiles < 0) missingFiles = 0;
+      }
+
+      document.getElementById("activeFiles").textContent = activeFiles.toLocaleString();
+      document.getElementById("missingFiles").textContent = missingFiles;
+    }
+
+    setInterval(updateCounters, 5000);
+
+    /* PAGE FADE-OUT ON LINK CLICK */
+    document.querySelectorAll("nav a").forEach(link => {
+      link.addEventListener("click", e => {
+        e.preventDefault();
+        const url = link.getAttribute("href");
+        document.body.style.opacity = "0";
+        setTimeout(() => {
+          window.location.href = url;
+        }, 800);
+      });
+    });
+  </script>
+
+</body>
+</html>
 
     <div class="case">
       <h2>CASE 002 — The Black Dahlia Reconstruction</h2>
