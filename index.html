@@ -157,45 +157,6 @@
       letter-spacing: 2px;
       animation: fadeIn 8s ease-out;
     }
-
-    /* ALWAYS-VISIBLE TERMINAL */
-    #terminal-window {
-      width: 600px;
-      max-width: 90%;
-      background: #000;
-      border: 1px solid #4d0000;
-      padding: 30px;
-      font-family: "Courier New", monospace;
-      color: #b30000;
-      text-shadow: 0 0 8px #4d0000;
-      margin: 80px auto;
-      animation: fadeIn 1s ease-out;
-    }
-
-    .terminal-line {
-      margin-bottom: 15px;
-      letter-spacing: 2px;
-    }
-
-    #terminal-input {
-      width: 100%;
-      background: #000;
-      border: none;
-      border-bottom: 1px solid #4d0000;
-      color: #b30000;
-      padding: 8px;
-      font-size: 1.1rem;
-      outline: none;
-      letter-spacing: 2px;
-    }
-
-    #terminal-error {
-      margin-top: 15px;
-      color: #7a0000;
-      font-size: 0.9rem;
-      height: 20px;
-      letter-spacing: 2px;
-    }
   </style>
 </head>
 
@@ -232,14 +193,6 @@
 
   <div class="mainline">The archive grows because something wants to be remembered..</div>
 
-  <!-- ALWAYS-VISIBLE TERMINAL -->
-  <div id="terminal-window">
-    <div class="terminal-line">ACCESS POINT // MOX4REAL ARCHIVE</div>
-    <div class="terminal-line">ENTER PASSWORD:</div>
-    <input type="password" id="terminal-input">
-    <div id="terminal-error"></div>
-  </div>
-
   <script>
     /* PAGE FADE-IN */
     window.addEventListener("load", () => {
@@ -272,26 +225,6 @@
           window.location.href = url;
         }, 800);
       });
-    });
-
-    /* TERMINAL PASSWORD LOGIC */
-    const terminalInput = document.getElementById("terminal-input");
-    const terminalError = document.getElementById("terminal-error");
-
-    terminalInput.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") {
-        const value = terminalInput.value.trim().toLowerCase();
-
-        if (value === "moxxx") {
-          document.body.style.opacity = "0";
-          setTimeout(() => {
-            window.location.href = "secret.html";
-          }, 800);
-        } else {
-          terminalError.textContent = "ACCESS DENIED // INCORRECT PASSWORD";
-          terminalInput.value = "";
-        }
-      }
     });
   </script>
 
