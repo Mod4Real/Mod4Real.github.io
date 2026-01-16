@@ -188,11 +188,10 @@
 
   <div class="divider"></div>
 
-  <div class="tagline">	I don’t collect files. I collect mistakes. Yours is already in the Archive.</div>
+  <div class="tagline">I don’t collect files. I collect mistakes. Yours is already in the Archive.</div>
   <div class="subtagline">Welcome to the archive.</div>
 
-  <div class="mainline">I keep track of everyone who wanders in. You’re no exception
-</div>
+  <div class="mainline">I keep track of everyone who wanders in. You’re no exception</div>
 
   <script>
     /* PAGE FADE-IN */
@@ -226,6 +225,13 @@
           window.location.href = url;
         }, 800);
       });
+    });
+
+    /* SECRET DEV LOGIN TRIGGER: Shift + D */
+    window.addEventListener("keydown", (e) => {
+      if (e.shiftKey && (e.key === "D" || e.key === "d")) {
+        window.location.href = "login.html";
+      }
     });
   </script>
 
