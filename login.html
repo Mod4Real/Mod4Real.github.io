@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mox4Real — Curator Login</title>
+
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #000;
+      color: #b30000;
+      font-family: "Cinzel", "Times New Roman", serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at center, transparent 40%, rgba(0,0,0,0.9) 100%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .login-wrapper {
+      position: relative;
+      z-index: 2;
+      width: 90%;
+      max-width: 420px;
+      border: 1px solid #330000;
+      padding: 30px 30px 40px;
+      background: #050505;
+      box-shadow: 0 0 25px #1a0000;
+      text-align: center;
+    }
+
+    .login-title {
+      font-size: 1.6rem;
+      letter-spacing: 6px;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+      color: #b30000;
+    }
+
+    .login-sub {
+      font-size: 0.9rem;
+      color: #7a0000;
+      margin-bottom: 25px;
+    }
+
+    .login-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 10px;
+    }
+
+    .login-form label {
+      text-align: left;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      color: #660000;
+    }
+
+    .login-form input {
+      background: #0d0d0d;
+      border: 1px solid #330000;
+      padding: 10px;
+      color: #b30000;
+      font-family: "Cinzel", serif;
+      letter-spacing: 1px;
+      outline: none;
+      transition: border 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .login-form input:focus {
+      border-color: #b30000;
+      box-shadow: 0 0 10px #4d0000;
+    }
+
+    .login-form button {
+      margin-top: 10px;
+      background: #330000;
+      border: 1px solid #660000;
+      padding: 10px;
+      color: #b30000;
+      font-family: "Cinzel", serif;
+      letter-spacing: 3px;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-transform: uppercase;
+    }
+
+    .login-form button:hover {
+      background: #660000;
+      color: #000;
+      box-shadow: 0 0 15px #b30000;
+    }
+
+    .error-message {
+      margin-top: 15px;
+      font-size: 0.85rem;
+      color: #ff3333;
+      min-height: 18px;
+    }
+
+    .back-link {
+      margin-top: 20px;
+      font-size: 0.8rem;
+    }
+
+    .back-link a {
+      color: #660000;
+      text-decoration: none;
+      letter-spacing: 2px;
+    }
+
+    .back-link a:hover {
+      color: #b30000;
+      text-shadow: 0 0 8px #b30000;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="login-wrapper">
+    <div class="login-title">Curator Access</div>
+    <div class="login-sub">Restricted entry. Authorized personnel only.</div>
+
+    <form class="login-form" id="loginForm">
+      <div>
+        <label for="email">IDENTIFIER</label>
+        <input type="email" id="email" placeholder="curator email" required>
+      </div>
+
+      <div>
+        <label for="password">PASSCODE</label>
+        <input type="password" id="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit">Enter Archive</button>
+    </form>
+
+    <div class="error-message" id="errorMessage"></div>
+
+    <div class="back-link">
+      <a href="index.html">Return to public feed</a>
+    </div>
+  </div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyDrnG5diZMy0jJmhrWoGmZANaaaG43eeyA",
+      authDomain: "mox4real-16bb4.firebaseapp.com",
+      projectId: "mox4real-16bb4",
+      storageBucket: "mox4real-16bb4.firebasestorage.app",
+      messagingSenderId: "281854667825",
+      appId: "1:281854667825:web:412d71cf89900a6cb43910",
+      measurementId: "G-Y3NTLNP4Z3"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+
+    const allowedEmail = "shaqirgardypie@gmail.com";
+
+    const form = document.getElementById("loginForm");
+    const errorMessage = document.getElementById("errorMessage");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      errorMessage.textContent = "";
+
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value;
+
+      try {
+        const userCred = await signInWithEmailAndPassword(auth, email, password);
+        const user = userCred.user;
+
+        if (user.email !== allowedEmail) {
+          await signOut(auth);
+          errorMessage.textContent = "Unauthorized identifier.";
+          return;
+        }
+
+        window.location.href = "admin.html";
+      } catch (err) {
+        errorMessage.textContent = "Access denied. Check credentials.";
+      }
+    });
+  </script>
+
+</body>
+</html>
