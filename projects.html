@@ -29,6 +29,31 @@
       z-index: 5;
     }
 
+    /* ADMIN LOGIN BUTTON (TOP RIGHT) */
+    .admin-login-box {
+      position: fixed;
+      top: 20px;
+      right: 25px;
+      z-index: 999;
+      padding: 10px 18px;
+      border: 1px solid #4d0000;
+      background: rgba(0, 0, 0, 0.7);
+      color: #b30000;
+      font-size: 0.9rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.3s ease;
+      text-decoration: none;
+      box-shadow: 0 0 12px #1a0000;
+    }
+
+    .admin-login-box:hover {
+      background: #4d0000;
+      color: #fff;
+      box-shadow: 0 0 18px #b30000;
+    }
+
     .logo {
       text-align: center;
       margin-top: 120px;
@@ -97,7 +122,6 @@
       line-height: 1.6;
     }
 
-    /* Expandable toggle icon */
     .project::after {
       content: "+";
       position: absolute;
@@ -114,7 +138,6 @@
       transform: rotate(180deg);
     }
 
-    /* Hidden details */
     .details {
       max-height: 0;
       overflow: hidden;
@@ -136,6 +159,9 @@
 </head>
 
 <body>
+
+  <!-- ADMIN LOGIN BUTTON -->
+  <a href="login.html" class="admin-login-box">ADMIN LOGIN</a>
 
   <div class="logo">PROJECTS</div>
 
@@ -215,7 +241,6 @@
       });
     });
 
-    // Expandable project sections
     document.querySelectorAll(".project").forEach(project => {
       project.addEventListener("click", () => {
         project.classList.toggle("open");
