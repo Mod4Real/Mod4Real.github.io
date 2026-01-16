@@ -6,6 +6,7 @@
   <title>Visuals — Mox4Real</title>
 
   <style>
+    /* GLOBAL */
     body {
       margin: 0;
       padding: 0;
@@ -20,6 +21,7 @@
 
     body.loaded { opacity: 1; }
 
+    /* CINEMATIC VIGNETTE */
     body::before {
       content: "";
       position: fixed;
@@ -29,7 +31,7 @@
       z-index: 5;
     }
 
-    /* ADMIN LOGIN BUTTON (TOP RIGHT) */
+    /* ADMIN LOGIN BUTTON */
     .admin-login-box {
       position: fixed;
       top: 20px;
@@ -54,6 +56,7 @@
       box-shadow: 0 0 18px #b30000;
     }
 
+    /* HEADER */
     .logo {
       text-align: center;
       margin-top: 120px;
@@ -64,6 +67,7 @@
       animation: fadeIn 3s ease-out;
     }
 
+    /* NAVIGATION */
     nav {
       margin-top: 60px;
       display: flex;
@@ -86,6 +90,7 @@
       transform: translateY(-3px);
     }
 
+    /* DIVIDER */
     .divider {
       width: 60%;
       height: 1px;
@@ -119,7 +124,7 @@
       box-shadow: 0 0 10px #b30000;
     }
 
-    /* VISUALS */
+    /* VISUAL ENTRIES (MATCHING CASE FILES) */
     .visuals-container {
       width: 70%;
       margin: 0 auto 100px;
@@ -128,7 +133,7 @@
 
     .visual {
       margin-bottom: 60px;
-      padding-bottom: 40px;
+      padding-bottom: 30px;
       border-bottom: 1px solid #330000;
       cursor: pointer;
       position: relative;
@@ -138,8 +143,8 @@
     .visual h2 {
       font-size: 1.6rem;
       color: #b30000;
-      letter-spacing: 3px;
       margin-bottom: 10px;
+      letter-spacing: 3px;
     }
 
     /* Toggle icon */
@@ -159,7 +164,7 @@
       transform: rotate(180deg);
     }
 
-    /* Hidden content */
+    /* Hidden details */
     .details {
       max-height: 0;
       overflow: hidden;
@@ -227,36 +232,40 @@
 
   <div class="visuals-container">
 
+    <!-- VISUAL ENTRY 1 -->
     <div class="visual">
       <h2>EVIDENCE‑A01: “Stairwell Capture”</h2>
       <div class="details">
         <p>
-          Description: A dim stairwell lit by a single flickering bulb.
-          A shadow appears on the landing despite no visible source.
-          Investigators report feeling watched while reviewing the file.
+          A dim stairwell lit by a single flickering bulb.  
+          A shadow appears on the landing despite no visible source.  
+          Investigators reported a persistent sensation of being watched.
         </p>
         <img src="YOUR-IMAGE-URL-HERE" alt="Stairwell Capture">
       </div>
     </div>
 
+    <!-- VISUAL ENTRY 2 -->
     <div class="visual">
       <h2>EVIDENCE‑B14: “Unmarked Doorway”</h2>
       <div class="details">
         <p>
-          Description: A door with no frame, hinges, or handle.
-          The wall texture bends unnaturally around it.
-          Audio notes mention scratching from the other side.
+          A door with no frame, hinges, or handle.  
+          The wall texture bends unnaturally around it.  
+          Audio logs mention scratching from the other side.
         </p>
         <img src="YOUR-IMAGE-URL-HERE" alt="Unmarked Doorway">
       </div>
     </div>
 
+    <!-- VISUAL ENTRY 3 -->
     <div class="visual">
       <h2>EVIDENCE‑C09: “Figure in Reflection”</h2>
       <div class="details">
         <p>
-          Description: A bathroom mirror fogged over except for a handprint.
-          A silhouette stands behind the photographer, but no one else was present.
+          A bathroom mirror fogged over except for a handprint.  
+          A silhouette stands behind the photographer —  
+          but no one else was present.
         </p>
         <img src="YOUR-IMAGE-URL-HERE" alt="Figure in Reflection">
       </div>
