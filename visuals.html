@@ -6,7 +6,6 @@
   <title>Visuals — Mox4Real</title>
 
   <style>
-    /* GLOBAL */
     body {
       margin: 0;
       padding: 0;
@@ -21,7 +20,6 @@
 
     body.loaded { opacity: 1; }
 
-    /* CINEMATIC VIGNETTE */
     body::before {
       content: "";
       position: fixed;
@@ -31,7 +29,6 @@
       z-index: 5;
     }
 
-    /* ADMIN LOGIN BUTTON */
     .admin-login-box {
       position: fixed;
       top: 20px;
@@ -56,7 +53,6 @@
       box-shadow: 0 0 18px #b30000;
     }
 
-    /* HEADER */
     .logo {
       text-align: center;
       margin-top: 120px;
@@ -67,7 +63,6 @@
       animation: fadeIn 3s ease-out;
     }
 
-    /* NAVIGATION */
     nav {
       margin-top: 60px;
       display: flex;
@@ -90,7 +85,6 @@
       transform: translateY(-3px);
     }
 
-    /* DIVIDER */
     .divider {
       width: 60%;
       height: 1px;
@@ -99,7 +93,6 @@
       animation: fadeIn 5s ease-out;
     }
 
-    /* SEARCH BAR */
     .search-box {
       width: 70%;
       margin: 0 auto 40px;
@@ -124,7 +117,6 @@
       box-shadow: 0 0 10px #b30000;
     }
 
-    /* VISUAL ENTRIES (MATCHING CASE FILES) */
     .visuals-container {
       width: 70%;
       margin: 0 auto 100px;
@@ -147,7 +139,6 @@
       letter-spacing: 3px;
     }
 
-    /* Toggle icon */
     .visual::after {
       content: "+";
       position: absolute;
@@ -164,7 +155,6 @@
       transform: rotate(180deg);
     }
 
-    /* Hidden details */
     .details {
       max-height: 0;
       overflow: hidden;
@@ -210,7 +200,6 @@
 
 <body>
 
-  <!-- ADMIN LOGIN BUTTON -->
   <a href="login.html" class="admin-login-box">ADMIN LOGIN</a>
 
   <div class="logo">VISUALS</div>
@@ -225,49 +214,149 @@
 
   <div class="divider"></div>
 
-  <!-- SEARCH BAR -->
   <div class="search-box">
     <input type="text" id="searchInput" placeholder="Search visuals...">
   </div>
 
   <div class="visuals-container">
 
-    <!-- VISUAL ENTRY 1 -->
+    <!-- VISUAL 001 — MATCHES CASE 001 -->
     <div class="visual">
-      <h2>EVIDENCE‑A01: “Stairwell Capture”</h2>
+      <h2>VISUAL 001 — Evidence Linked to CASE 001</h2>
       <div class="details">
         <p>
-          A dim stairwell lit by a single flickering bulb.  
-          A shadow appears on the landing despite no visible source.  
-          Investigators reported a persistent sensation of being watched.
+          A grainy photograph recovered from a damaged roll of film.  
+          The stairwell appears empty, yet a faint silhouette stands  
+          halfway down the steps — matching the height and posture  
+          described in the CASE 001 witness statements.
         </p>
-        <img src="YOUR-IMAGE-URL-HERE" alt="Stairwell Capture">
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 001 Visual">
       </div>
     </div>
 
-    <!-- VISUAL ENTRY 2 -->
+    <!-- VISUAL 002 — MATCHES CASE 002 -->
     <div class="visual">
-      <h2>EVIDENCE‑B14: “Unmarked Doorway”</h2>
+      <h2>VISUAL 002 — Evidence Linked to CASE 002</h2>
       <div class="details">
         <p>
-          A door with no frame, hinges, or handle.  
-          The wall texture bends unnaturally around it.  
-          Audio logs mention scratching from the other side.
+          A bathroom mirror photographed during the investigation.  
+          The fog pattern reveals a handprint that does not match  
+          the victim or any known individual.  
+          Investigators reported a cold draft despite sealed windows.
         </p>
-        <img src="YOUR-IMAGE-URL-HERE" alt="Unmarked Doorway">
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 002 Visual">
       </div>
     </div>
 
-    <!-- VISUAL ENTRY 3 -->
+    <!-- VISUAL 003 — MATCHES CASE 003 -->
     <div class="visual">
-      <h2>EVIDENCE‑C09: “Figure in Reflection”</h2>
+      <h2>VISUAL 003 — Evidence Linked to CASE 003</h2>
       <div class="details">
         <p>
-          A bathroom mirror fogged over except for a handprint.  
-          A silhouette stands behind the photographer —  
-          but no one else was present.
+          A streetlight captured flickering at the exact moment  
+          the suspect was last seen.  
+          The shadow cast on the pavement does not align with  
+          any physical object in the frame.
         </p>
-        <img src="YOUR-IMAGE-URL-HERE" alt="Figure in Reflection">
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 003 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 004 — MATCHES CASE 004 -->
+    <div class="visual">
+      <h2>VISUAL 004 — Evidence Linked to CASE 004</h2>
+      <div class="details">
+        <p>
+          A photograph taken inside the abandoned residence.  
+          A figure appears in the far doorway, though no one  
+          was present during the capture.  
+          The figure’s proportions are slightly distorted.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 004 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 005 — MATCHES CASE 005 -->
+    <div class="visual">
+      <h2>VISUAL 005 — Evidence Linked to CASE 005</h2>
+      <div class="details">
+        <p>
+          A highway surveillance still.  
+          A vehicle matching the description from CASE 005  
+          appears briefly, but its license plate is unreadable  
+          due to a blur that investigators could not replicate.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 005 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 006 — MATCHES CASE 006 -->
+    <div class="visual">
+      <h2>VISUAL 006 — Evidence Linked to CASE 006</h2>
+      <div class="details">
+        <p>
+          A motel hallway captured at 3:14 AM.  
+          A shadow stretches across the carpet,  
+          but no physical object is present to cast it.  
+          The shadow’s outline resembles the suspect profile.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 006 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 007 — MATCHES CASE 007 -->
+    <div class="visual">
+      <h2>VISUAL 007 — Evidence Linked to CASE 007</h2>
+      <div class="details">
+        <p>
+          A farmhouse window photographed from outside.  
+          A pale face appears behind the glass,  
+          though the building was confirmed empty.  
+          The reflection does not match the photographer.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 007 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 008 — MATCHES CASE 008 -->
+    <div class="visual">
+      <h2>VISUAL 008 — Evidence Linked to CASE 008</h2>
+      <div class="details">
+        <p>
+          A fog‑covered alleyway.  
+          A figure stands at the far end,  
+          partially obscured by mist.  
+          The figure disappears in the next frame.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 008 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 009 — MATCHES CASE 009 -->
+    <div class="visual">
+      <h2>VISUAL 009 — Evidence Linked to CASE 009</h2>
+      <div class="details">
+        <p>
+          A child’s drawing recovered from the scene.  
+          The sketch depicts a tall, thin figure  
+          standing beside a bed.  
+          No child was present at the location.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 009 Visual">
+      </div>
+    </div>
+
+    <!-- VISUAL 010 — MATCHES CASE 010 -->
+    <div class="visual">
+      <h2>VISUAL 010 — Evidence Linked to CASE 010</h2>
+      <div class="details">
+        <p>
+          A blueprint fragment found in the ruins.  
+          The lines do not match the building’s real layout.  
+          Investigators believe it depicts a hidden room  
+          that has never been located.
+        </p>
+        <img src="YOUR-IMAGE-URL-HERE" alt="Case 010 Visual">
       </div>
     </div>
 
@@ -278,7 +367,6 @@
       document.body.classList.add("loaded");
     });
 
-    /* SEARCH FUNCTION */
     const searchInput = document.getElementById("searchInput");
     const visuals = document.querySelectorAll(".visual");
 
@@ -291,14 +379,12 @@
       });
     });
 
-    /* EXPANDABLE VISUALS */
     document.querySelectorAll(".visual").forEach(visual => {
       visual.addEventListener("click", () => {
         visual.classList.toggle("open");
       });
     });
 
-    /* PAGE FADE-OUT ON LINK CLICK */
     document.querySelectorAll("nav a").forEach(link => {
       link.addEventListener("click", e => {
         e.preventDefault();
